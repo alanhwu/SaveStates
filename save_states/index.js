@@ -8,7 +8,7 @@ app.use(express.json({limit: '1mb'}));
 
 const database = new Datastore('database.db');
 
-//this will load past data into memory. or if this file does not exist, it'll make it.
+// Loads past data into memory, or creates a database if it does not exist.
 database.loadDatabase();
 //database.insert({name: 'alan', status: 'dababy'});
 //database.insert({name: 'elena', status: 'hibaby'});
@@ -16,12 +16,12 @@ database.loadDatabase();
 
 app.get('/api', (request, response) => {
     database.find({},(err, data) => {
-	if(err){
-	    response.end();
-	    return;
-	}
-	response.json(data);
-    });
+    if(err){
+        response.end();
+        return;
+    }
+    response.json(data);
+  });
 });
 
 
@@ -35,4 +35,4 @@ app.post('/api', (request, response) => {
     database.insert(data);    
 //    console.log(database);
     response.json(data);
-    });
+});

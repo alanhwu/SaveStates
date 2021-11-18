@@ -7,24 +7,23 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Data Selfie App</h1>
+    <h1>Save States</h1>
 
-    <p>
+    <!-- <p>
       latitude: <span id="latitude"></span>&deg;<br />
       longitude: <span id="longitude">&deg;</span>
-    </p>
+    </p> -->
 
 
-    <label for="mood">enter your mood</label>
-    <input id="mood" value="vibin" />
-    <button id="submit">submit</button>
+    <label for="search">Search for a game: </label>
+    <input id="omnibox" value="Find reviews for games" />
+    <button id="go">Go</button>
     <script>
 
-      let lat, lon;
-      const button = document.getElementById('submit');
+      const button = document.getElementById('go');
       button.addEventListener('click', async event => {
-        const mood = document.getElementById('mood').value;
-        const data = { lat, lon, mood };
+        const query = document.getElementById('omnibox').value;
+        const data = { query };
         const options = {
           method: 'POST',
           headers: {
@@ -38,13 +37,13 @@
       });
 
       
-      if('geolocation' in navigator){
-	  console.log('geolocation available');
-	  navigator.geolocation.getCurrentPosition(async position => {
-	      lat = position.coords.latitude;
-	      lon = position.coords.longitude;
-	      document.getElementById('latitude').textContent = lat;
-    	      document.getElementById('longitude').textContent = lon;
+//     if('geolocation' in navigator){
+//	  console.log('geolocation available');
+//	  navigator.geolocation.getCurrentPosition(async position => {
+//	      lat = position.coords.latitude;
+//	      lon = position.coords.longitude;
+//	      document.getElementById('latitude').textContent = lat;
+//    	      document.getElementById('longitude').textContent = lon;
 //	      console.log(position);
 //	      const data = {lat, lon};
 //	      const options = {
@@ -57,10 +56,10 @@
 //	      const response =await fetch('/api', options);
 //	      const json = await response.json();
 //	      console.log(json);
-	  });
-      }else{
-	  console.log('geolocation not available');
-      }
+//	  });
+//     }else{
+//   console.log('geolocation not available');
+//   }
     </script>
   </body>
 </html>
