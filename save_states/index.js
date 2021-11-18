@@ -10,21 +10,16 @@ const database = new Datastore('database.db');
 
 // Loads past data into memory, or creates a database if it does not exist.
 database.loadDatabase();
-//database.insert({name: 'alan', status: 'dababy'});
-//database.insert({name: 'elena', status: 'hibaby'});
-
 
 app.get('/api', (request, response) => {
     database.find({},(err, data) => {
-    if(err){
+    if (err) {
         response.end();
         return;
     }
     response.json(data);
   });
 });
-
-
 
 app.post('/api', (request, response) => {
     console.log('I got a request!');
@@ -33,6 +28,5 @@ app.post('/api', (request, response) => {
     const timestamp = Date.now();
     data.timestamp = timestamp;
     database.insert(data);    
-//    console.log(database);
     response.json(data);
 });
