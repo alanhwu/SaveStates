@@ -26,28 +26,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
 const database = new Datastore('database.db');
 
 // Loads past data into memory, or creates a database if it does not exist.
 database.loadDatabase();
-
 app.get('/api', (request, response) => {
+console.log("hello world");
     database.find({},(err, data) => {
     if (err) {
         response.end();
@@ -65,6 +49,22 @@ app.post('/api', (request, response) => {
     data.timestamp = timestamp;
     database.insert(data);    
     response.json(data);
+});
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 module.exports = app;
