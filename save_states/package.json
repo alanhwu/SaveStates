@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart"
   },
   "keywords": [
     "example",
@@ -15,7 +17,12 @@
   "author": "Alan",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "nedb": "^1.8.0"
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "nedb": "^1.8.0",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
