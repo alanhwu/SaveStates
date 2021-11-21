@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './Homepage.css';
+import {Link} from "react-router-dom";
 
 function Homepage() {
     return (
@@ -10,7 +11,7 @@ function Homepage() {
             </header>
             <label className="Search">Search for a game: </label>
             <input className="Omnibox" value="Find reviews for games" />
-            <button className="Go">Go</button>
+            <Link to="/gamepage"><button className="Go">Go</button></Link>
         </div>
     );
 }

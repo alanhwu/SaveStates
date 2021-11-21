@@ -1,13 +1,18 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import './index.css';
 import Homepage from './Homepage';
+import Gamepage from './Gamepage';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Homepage />
-  </React.StrictMode>,
+  <Router>
+    <Routes>
+      <Route path="" element={<Homepage />}/>
+      <Route path="/gamepage" element={<Gamepage />}/>
+    </Routes>
+  </Router>,
   document.getElementById('root')
 );
 

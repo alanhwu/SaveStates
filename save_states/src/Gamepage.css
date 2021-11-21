@@ -1,19 +1,19 @@
-.Homepage {
+.Gamepage {
   text-align: center;
 }
 
-.Homepage-logo {
+.Gamepage-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .Homepage-logo {
-    animation: Homepage-logo-spin infinite 20s linear;
+  .Gamepage-logo {
+    animation: Gamepage-logo-spin infinite 20s linear;
   }
 }
 
-.Homepage-header {
+.Gamepage-header {
   /* background-color: #282c34; */
   /* min-height: 100vh; */
   display: flex;
@@ -24,11 +24,11 @@
   color: white;
 }
 
-.Homepage-link {
+.Gamepage-link {
   color: #61dafb;
 }
 
-@keyframes Homepage-logo-spin {
+@keyframes Gamepage-logo-spin {
   from {
     transform: rotate(0deg);
   }
