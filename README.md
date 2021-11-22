@@ -4,10 +4,10 @@ of various titles, and for each player to see what their friends are up to.
 
 ## Quickstart
 To get started, clone this repository with `git clone
-git@github.com:alanhwu/SaveStates.git`, and then switch into the
-`createotherpages` branch by running `git checkout createotherpages`. Then,
-install dependencies with `cd save_states && npm install`. Finally, run the
-project with `npm start`.
+git@github.com:alanhwu/SaveStates.git`, and then switch into this branch by
+running `git checkout createotherpages`. Then, install dependencies with `cd
+save_states && npm install`. Finally, run the project with `npm start` and visit
+`localhost:3000` in your browser of choice.
 
 ## How this project is organized
 The general file structure for this project is as follows:
@@ -47,6 +47,9 @@ accomplished in `src/index.js`, as seen below:
 <Route path="/" element={<Homepage />}/>
 <Route path="/gamepage" element={<Gamepage />}/>
 ```
+For example, the second line in the code snippet above defines the file path
+`/gamepage` to use the file `src/Gamepage.js` for its contents. You can verify
+this yourself by visiting `localhost:3000/gamepage`.
 
 #### `src/[Other files].js`
 These files house the actual webpages themselves, and simply contain a function
