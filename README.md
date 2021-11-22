@@ -2,12 +2,17 @@
 This project aims to be a place for the gaming community to share their reviews
 of various titles, and for each player to see what their friends are up to.
 
+## Dependencies
+Make sure you have [Node.js](https://nodejs.org/en/download/) installed.
+
 ## Quickstart
-To get started, clone this repository with `git clone
-git@github.com:alanhwu/SaveStates.git`, and then switch into this branch by
-running `git checkout createotherpages`. Then, install dependencies with `cd
-save_states && npm install`. Finally, run the project with `npm start` and visit
-`localhost:3000` in your browser of choice.
+Run the following commands in the terminal:
+```sh
+git clone https://github.com/alanhwu/SaveStates.git
+cd SaveStates/save_states && npm install
+npm start
+```
+Then visit `localhost:3000` in your browser of choice.
 
 ## How this project is organized
 The general file structure for this project is as follows:
