@@ -4,8 +4,19 @@ import { Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
+function Homepage(){
+    return (
+        <Container fluid class="mx-auto">
+            <h1>Hi!</h1>
+        </Container>
+    )
+}
 
+/*
 function Homepage() {
     return (
         <div className="Homepage">
@@ -18,6 +29,6 @@ function Homepage() {
             <Link to="/gamepage"><Button className="Go">Go</Button></Link>
         </div>
     );
-}
+}*/
 
 export default Homepage;
