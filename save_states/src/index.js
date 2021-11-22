@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <Router>
     <Routes>
-      <Route path="" element={<Homepage />}/>
+      <Route path="/" element={<Homepage />}/>
       <Route path="/gamepage" element={<Gamepage />}/>
     </Routes>
   </Router>,
