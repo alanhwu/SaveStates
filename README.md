@@ -22,13 +22,11 @@ README.md (You are here!)
 save_states/
 └─── package.json
 └─── package-lock.json
+└─── start_db.js
 └─── src/
       └─── index.js
       └─── Homepage.js
       └─── Gamepage.js
-      └─── ...
-└─── servers/
-      └─── Login.js
       └─── ...
 └─── public/
       └─── logo.png
@@ -73,10 +71,13 @@ for organizing the webpages.
 Contains the databases---will contain separate files to store information about
 the user and about various games.
 
-### `servers/`
-This folder contains the source files for handling database querying, appending,
-among other things. Currently only houses `login.js`, which handles querying the
-`databases/user_info.db` database for login information.
+### `start_db.js`
+This file contains the script necessary to locally host our databases at
+`localhost:3001`. It currently supports adding username--password combinations
+to `user_info.db`, as well as querying `games.db` for game titles.
+* TODO: Make game search functionality better
+* TODO: Once login/sign up screens are distinct, write one function to query
+  `user_info.db` and one to append to it.
 
 ### `public/`
 As far as I can tell, this folder just contains resources that may be used by
