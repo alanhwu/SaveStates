@@ -45,7 +45,7 @@ class LoginPage extends Component {
             body: JSON.stringify(data)
         };
         // Add to the database
-        fetch('/api', options);
+        fetch('http://localhost:3001/api', options);
     }
 
 }
