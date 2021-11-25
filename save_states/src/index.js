@@ -5,12 +5,14 @@ import './index.css';
 import Homepage from './Homepage';
 import Gamepage from './Gamepage';
 import reportWebVitals from './reportWebVitals';
+import Login from './Login';
 
 ReactDOM.render(
   <Router>
     <Routes>
       <Route path="/" element={<Homepage />}/>
       <Route path="/gamepage" element={<Gamepage />}/>
+      <Route path="/login" element={<Login />}/>
     </Routes>
   </Router>,
   document.getElementById('root')
