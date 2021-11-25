@@ -12,7 +12,8 @@ git clone https://github.com/alanhwu/SaveStates.git
 cd SaveStates/save_states && npm install
 npm start
 ```
-Then visit `localhost:3000` in your browser of choice.
+To start the backend servers, run `node servers/Login.js`. Then visit
+`localhost:3000` in your browser of choice.
 
 ## How this project is organized
 The general file structure for this project is as follows:
