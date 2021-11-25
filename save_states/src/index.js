@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from './Homepage';
 import Gamepage from './Gamepage';
+import Loginpage from './Loginpage';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
@@ -11,6 +12,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Homepage />}/>
       <Route path="/gamepage" element={<Gamepage />}/>
+      <Route path="/loginpage" element={<Loginpage />}/>
     </Routes>
   </Router>,
   document.getElementById('root')

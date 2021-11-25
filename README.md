@@ -27,8 +27,14 @@ save_states/
       └─── Homepage.js
       └─── Gamepage.js
       └─── ...
+└─── servers/
+      └─── Login.js
+      └─── ...
 └─── public/
       └─── logo.png
+      └─── ...
+└─── databases/
+      └─── user_info.db
       └─── ...
 ```
 
@@ -62,6 +68,15 @@ These files house the actual webpages themselves, and simply contain a function
 that returns the contents of the webpage. Of note is the `Link` XML tag, which
 allows for redirects between pages using the aforementioned `/` file tree schema
 for organizing the webpages.
+
+### `databases/`
+Contains the databases---will contain separate files to store information about
+the user and about various games.
+
+### `servers/`
+This folder contains the source files for handling database querying, appending,
+among other things. Currently only houses `login.js`, which handles querying the
+`databases/user_info.db` database for login information.
 
 ### `public/`
 As far as I can tell, this folder just contains resources that may be used by

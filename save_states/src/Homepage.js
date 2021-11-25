@@ -16,6 +16,7 @@ function Homepage() {
             <label className="Search">Search for a game: </label>
             <input className="Omnibox" value="Find reviews for games" />
             <Link to="/gamepage"><Button className="Go">Go</Button></Link>
+            <Link to="/loginpage"><Button className="login">Sign me in!</Button></Link>
         </div>
     );
 }
