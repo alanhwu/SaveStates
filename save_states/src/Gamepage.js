@@ -2,20 +2,25 @@ import portalImage from './images/portal.jpg';
 import './Gamepage.css';
 import { Link } from "react-router-dom";
 
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-
-
+import Image from 'react-bootstrap/Image';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Gamepage() {
     let gameName = "Portal"
     return (
-        <div className="Gamepage">
-            <Link to="/"><Button className="Homepage">Homepage</Button></Link>
-             <header className="Gamepage-header">
-                <img src={portalImage} className="Game-logo" alt="logo" class="img-thumbnail"/>
-            </header>
-        </div>
+        <Container>
+            <div className="Gamepage">
+                <Link to="/"><Button className="Homepage">Homepage</Button></Link>
+                <Row>
+                    <Col xs={6} md={4}>
+                        <Image src={portalImage} thumbnail />
+                    </Col>
+                </Row>
+            </div>
+        </Container>
     );
 }
 
