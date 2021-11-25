@@ -1,19 +1,19 @@
-.Homepage {
+.homepage {
   text-align: center;
 }
 
-.Homepage-logo {
+.homepage-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .Homepage-logo {
+  .homepage-logo {
     animation: Homepage-logo-spin infinite 20s linear;
   }
 }
 
-.Homepage-header {
+.homepage-header {
   /* background-color: #282c34; */
   /* min-height: 100vh; */
   display: flex;
@@ -24,7 +24,7 @@
   color: white;
 }
 
-.Homepage-link {
+.homepage-link {
   color: #61dafb;
 }
 

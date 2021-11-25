@@ -1,24 +1,27 @@
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import logo from './logo.svg';
 import './Gamepage.css';
-import { Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
+class GamePage extends Component {
 
+    render() {
+        return (
+            <div className="gamepage">
+                <Link to="/"><Button className="back">Back</Button></Link>
+                <h1 className="">This is the other page</h1>
+                <header className="gamepage-header">
+                    <img src={logo} className="gamepage-logo" alt="logo" />
+                </header>
+                <label className="search">Search for a game: </label>
+                <input className="omnibox" placeholder="Find reviews for games" />
+            </div>
+        );
+    }
 
-function Gamepage() {
-    return (
-        <div className="Gamepage">
-            <Link to="/"><Button className="Back">Back</Button></Link>
-            <h1 className="">This is the other page</h1>
-            <header className="Gamepage-header">
-                <img src={logo} className="Gamepage-logo" alt="logo" />
-            </header>
-            <label className="Search">Search for a game: </label>
-            <input className="Omnibox" value="Find reviews for games" />
-        </div>
-    );
 }
 
-export default Gamepage;
+export default GamePage;

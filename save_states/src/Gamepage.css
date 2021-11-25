@@ -1,19 +1,19 @@
-.Gamepage {
+.gamepage {
   text-align: center;
 }
 
-.Gamepage-logo {
+.gamepage-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .Gamepage-logo {
-    animation: Gamepage-logo-spin infinite 20s linear;
+  .gamepage-logo {
+    animation: gamepage-logo-spin infinite 20s linear;
   }
 }
 
-.Gamepage-header {
+.gamepage-header {
   /* background-color: #282c34; */
   /* min-height: 100vh; */
   display: flex;
@@ -24,11 +24,11 @@
   color: white;
 }
 
-.Gamepage-link {
+.gamepage-link {
   color: #61dafb;
 }
 
-@keyframes Gamepage-logo-spin {
+@keyframes gamepage-logo-spin {
   from {
     transform: rotate(0deg);
   }
