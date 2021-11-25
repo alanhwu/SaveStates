@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Homepage from './Homepage';
 import Gamepage from './Gamepage';
+import Userpage from './Userpage';
 import reportWebVitals from './reportWebVitals';
 import Login from './Login';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
       <Route path="/" element={<Homepage />}/>
       <Route path="/gamepage" element={<Gamepage />}/>
       <Route path="/login" element={<Login />}/>
+      <Route path="/user" element = {<Userpage />}/>
     </Routes>
   </Router>,
   document.getElementById('root')
