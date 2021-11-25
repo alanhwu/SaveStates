@@ -11,7 +11,11 @@ import Col from 'react-bootstrap/Col';
 function Homepage(){
     return (
         <Container fluid class="mx-auto">
-            <h1>Hi!</h1>
+            <div className="Homepage">
+                <h1>SaveStates</h1>
+                <Link to="/login"><Button className="Login">Login</Button></Link>
+                <Button className="Sign out">Sign out</Button>
+            </div>
         </Container>
     )
 }
