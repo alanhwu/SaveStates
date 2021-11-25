@@ -8,6 +8,8 @@ import Userpage from './Userpage';
 import reportWebVitals from './reportWebVitals';
 import Login from './Login';
 
+import './App.scss';
+
 ReactDOM.render(
   <Router>
     <Routes>
