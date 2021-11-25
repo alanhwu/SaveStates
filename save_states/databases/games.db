@@ -1,0 +1,144 @@
+{
+	"Name": "Minecraft",
+	"CoverArt": "https://www.minecraft.net/content/dam/games/minecraft/key-art/Games_Subnav_Minecraft-300x465.jpg",
+	"AverageRating": 8,
+	"Genre": "Action",
+	"ReleaseDate": "11/18/2011",
+	"Publisher": "Mojang"
+}
+{
+	"Name": "Terraria",
+	"CoverArt": "https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg?t=1590092560",
+	"AverageRating": 8.7,
+	"Genre": "Action",
+	"ReleaseDate": "5/16/2011",
+	"Publisher": "Re-Logic"
+}
+{
+	"Name": "Factorio",
+	"CoverArt": "https://cdn.akamai.steamstatic.com/steam/apps/427520/header.jpg?t=1620730652",
+	"AverageRating": 9.1,
+	"Genre": "Simulation",
+	"ReleaseDate": "2/21/2016",
+	"Publisher": "Wube Software"
+}
+{
+	"Name": "Bloons TD 6",
+	"CoverArt": "https://cdn.akamai.steamstatic.com/steam/apps/960090/header.jpg?t=1634303522",
+	"AverageRating": 7.7,
+	"Genre": "Tower Defense",
+	"ReleaseDate": "12/17/2018",
+	"Publisher": "Ninja Kiwi"
+}
+{
+	"Name": "Fallout New Vegas",
+	"CoverArt": "https://cdn.akamai.steamstatic.com/steam/apps/22380/header.jpg?t=1586905021",
+	"AverageRating": 8.8,
+	"Genre": "Role Playing Game",
+	"ReleaseDate": "10/19/2010",
+	"Publisher": "Bethesda"
+}
+{
+	"Name": "Grand Theft Auto: San Andreas",
+	"CoverArt": "https://m.media-amazon.com/images/M/MV5BMTAyYWYyOTMtNmUzNS00NzNjLTkyZTUtZjhlZjMzYzJmNzM5XkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_FMjpg_UX1000_.jpg",
+	"AverageRating": 8.9,
+	"Genre": "Action",
+	"ReleaseDate": "10/26/2004",
+	"Publisher": "Rockstar Games"
+}
+{
+	"Name": "The Elder Scrolls: Skyrim",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/thumb/1/15/The_Elder_Scrolls_V_Skyrim_cover.png/220px-The_Elder_Scrolls_V_Skyrim_cover.png",
+	"AverageRating": 8.4,
+	"Genre": "Role Playing Game",
+	"ReleaseDate": "11/11/2011",
+	"Publisher": "Bethesda"
+}
+{
+	"Name": "Super Mario World",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png",
+	"AverageRating": 8.7,
+	"Genre": "Platformer",
+	"ReleaseDate": "11/21/1990",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "Super Mario Odyssey",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg",
+	"AverageRating": 8.9,
+	"Genre": "Platformer",
+	"ReleaseDate": "10/27/2017",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "Super Smash Bros. Melee",
+	"CoverArt": "https://m.media-amazon.com/images/M/MV5BMzY2YzdjMmYtMDBjNS00OGRlLTlhNDctMGRmNjRmNWQ0MDZmXkEyXkFqcGdeQXVyNzczNzE5MTg@._V1_.jpg",
+	"AverageRating": 9.1,
+	"Genre": "Fighting",
+	"ReleaseDate": "11/21/2001",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "Legend of Zelda: Ocarina of Time",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg",
+	"AverageRating": 9.1,
+	"Genre": "Adventure",
+	"ReleaseDate": "11/21/1998",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "Legend of Zelda: Majoras Mask",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/6/60/The_Legend_of_Zelda_-_Majora%27s_Mask_Box_Art.jpg",
+	"AverageRating": 9.1,
+	"Genre": "Adventure",
+	"ReleaseDate": "4/27/2000",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "Legend of Zelda: A Link Between Worlds",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/1/1b/The_Legend_of_Zelda_A_Link_Between_Worlds_NA_cover.jpg",
+	"AverageRating": 8.8,
+	"Genre": "Adventure",
+	"ReleaseDate": "11/22/2013",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "Legend of Zelda: A Link to the Past",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/2/21/The_Legend_of_Zelda_A_Link_to_the_Past_SNES_Game_Cover.jpg",
+	"AverageRating": 8.9,
+	"Genre": "Adventure",
+	"ReleaseDate": "11/21/1991",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "Legend of Zelda: Breath of the Wild",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
+	"AverageRating": 8.7,
+	"Genre": "Adventure",
+	"ReleaseDate": "3/3/2017",
+	"Publisher": "Nintendo"
+}
+{
+	"Name": "League of Legends",
+	"CoverArt": "https://cdn1.dotesports.com/wp-content/uploads/2019/09/12195522/league-of-legends.jpg",
+	"AverageRating": 4.6,
+	"Genre": "MOBA",
+	"ReleaseDate": "11/27/2009",
+	"Publisher": "Riot Games"
+}
+{
+	"Name": "StarCraft II",
+	"CoverArt": "https://bnetcmsus-a.akamaihd.net/cms/blog_thumbnail/ay/AYJ0P9WLD7IP1602720127239.jpg",
+	"AverageRating": 7.2,
+	"Genre": "Real-Time Stategy",
+	"ReleaseDate": "7/27/2010",
+	"Publisher": "Blizzard Entertainment"
+}
+{
+	"Name": "Portal",
+	"CoverArt": "https://upload.wikimedia.org/wikipedia/en/9/9f/Portal_standalonebox.jpg",
+	"AverageRating": 9.2,
+	"Genre": "Platformer",
+	"ReleaseDate": "10/10/2007",
+	"Publisher": "Valve"
+}
