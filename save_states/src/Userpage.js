@@ -1,10 +1,5 @@
 import './Userpage.css';
-import { Link } from "react-router-dom";
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
-
-
+//import { Link } from "react-router-dom";
 
 function Userpage() {
     return (
