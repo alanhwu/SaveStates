@@ -5,16 +5,25 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {FormControl, InputGroup} from "react-bootstrap";
+import {Form, FormControl, InputGroup, Navbar} from "react-bootstrap";
 function Homepage(){
     return (
         <Container fluid class="mx-auto">
             <div className="Homepage">
-                <h1>SaveStates</h1>
-                <Link to="/login"><Button className="Login">Login</Button></Link>
-                {/*TODO: figure out how to sign out with the button*/}
-                <Button className="Sign out">Sign out</Button>
+                <h1 class={"Homepage-header"}>SaveStates</h1>
+                <div className="col-xs-12"/>
                 <Row>
+                    <Col/>
+                    <Col md={"auto"}>
+                        <Link to="/login"><Button className="Login">Login</Button></Link>
+                    </Col>
+                    {/*TODO: figure out how to sign out with the button*/}
+                    <Col md={"auto"}>
+                        <Button className="Sign Up">Sign out</Button>
+                    </Col>
+                    <Col/>
+                </Row>
+                <Row className={"col-mt-3"}>
                     <Col md={2}/>
                     <Col className={"mx-auto"}>
                         {/*TODO: figure out how to send get requests through this search bar*/}
@@ -25,7 +34,7 @@ function Homepage(){
                                 aria-describedby="basic-addon2"
                             />
                             {/*TODO: figure out how to send get requests through this button*/}
-                            <Button variant="outline-secondary" id="button-addon2" class="btn btn-primary">
+                            <Button variant="outline-secondary" id="button-addon2" class="btn btn-outline-light">
                                 Search
                             </Button>
                         </InputGroup>
@@ -51,5 +60,6 @@ function Homepage() {
         </div>
     );
 }*/
+
 
 export default Homepage;

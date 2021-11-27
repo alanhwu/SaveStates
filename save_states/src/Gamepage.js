@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Navbar, Form, FormControl, Table } from 'react-bootstrap'
+import saveStatesNavbar from "./saveStatesNavbar";
 
 function Gamepage() {
     {{/*Figure out what to get from here*/}}
@@ -18,6 +19,7 @@ function Gamepage() {
     return (
         <Container>
             {/*Navigation bar at the top, contains link to the homepage, search bar and logout button*/}
+            {saveStatesNavbar({userName})}
         <Navbar bg="dark" variant="dark">
             <Container fluid>
                 {/*Links to homescreen*/}
