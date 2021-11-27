@@ -2,6 +2,29 @@
   text-align: center;
 }
 
+.Gamepage-img {
+  height: 10px;
+}
+
+.Gamepage-header {
+  font-size: 80px;
+  text-align: center;
+}
+
+.Gamepage-text {
+  font-size: 20px;
+  text-align: left;
+}
+
+.Gamepage-reviewHeader {
+  font-size: 40px;
+  text-align: center;
+}
+
+.Gamepage-review {
+  font-size: 30px;
+  tex-align: left;
+}
 .Gamepage-logo {
   height: 40vmin;
   pointer-events: none;
