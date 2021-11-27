@@ -19,7 +19,7 @@ function Gamepage() {
     return (
         <Container>
             {/*Navigation bar at the top, contains link to the homepage, search bar and logout button*/}
-            {saveStatesNavbar({userName})}
+            {saveStatesNavbar((userName))}
         <Navbar bg="dark" variant="dark">
             <Container fluid>
                 {/*Links to homescreen*/}
