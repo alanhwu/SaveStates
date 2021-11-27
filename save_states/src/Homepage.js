@@ -3,24 +3,41 @@ import { Link } from "react-router-dom";
 import logo from './logo.svg';
 import './Homepage.css';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-
-class HomePage extends Component {
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import {FormControl, InputGroup} from "react-bootstrap";
+class Homepage extends Component {
     render() {
         return (
-            <div className="homepage">
-                <h1 className="">Save States</h1>
-                <header className="homepage-header">
-                    <img src={logo} className="homepage-logo" alt="logo" />
-                </header>
-                <label className="search">Search for a game: </label>
-                <input id="omnibox" placeholder="Find reviews for games" />
-                <Button className="search" onClick={this.handleClick.bind(this)}>Go</Button>
-                <Link to="/loginpage"><Button className="login">Sign me in!</Button></Link>
-            </div>
-        );
+            <Container fluid class="mx-auto">
+                <div className="Homepage">
+                    <h1>SaveStates</h1>
+                    <Link to="/login"><Button className="Login">Login</Button></Link>
+                    {/*TODO: figure out how to sign out with the button*/}
+                    <Button className="Sign out">Sign out</Button>
+                    <Row>
+                        <Col md={2}/>
+                        <Col className={"mx-auto"}>
+                            {/*TODO: figure out how to send get requests through this search bar*/}
+                            <InputGroup className=" mt-3 mb-3">
+                                <FormControl
+                                    placeholder="Search for Games"
+                                    aria-label="Search for Games"
+                                    aria-describedby="basic-addon2"
+                                />
+                                {/*TODO: figure out how to send get requests through this button*/}
+                                <Button variant="outline-secondary" id="button-addon2" class="btn btn-primary">
+                                    Search
+                                </Button>
+                            </InputGroup>
+                        </Col>
+                        <Col md={2}/>
+                    </Row>
+                </div>
+            );
+        }
     }
 
     // Handles the button click
