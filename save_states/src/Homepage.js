@@ -5,26 +5,28 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {FormControl} from "react-bootstrap";
-import {InputGroup} from "react-bootstrap";
+import {FormControl, InputGroup} from "react-bootstrap";
 function Homepage(){
     return (
         <Container fluid class="mx-auto">
             <div className="Homepage">
                 <h1>SaveStates</h1>
                 <Link to="/login"><Button className="Login">Login</Button></Link>
+                {/*TODO: figure out how to sign out with the button*/}
                 <Button className="Sign out">Sign out</Button>
                 <Row>
                     <Col md={2}/>
                     <Col className={"mx-auto"}>
+                        {/*TODO: figure out how to send get requests through this search bar*/}
                         <InputGroup className=" mt-3 mb-3">
                             <FormControl
-                                placeholder="Recipient's username"
-                                aria-label="Recipient's username"
+                                placeholder="Search for Games"
+                                aria-label="Search for Games"
                                 aria-describedby="basic-addon2"
                             />
+                            {/*TODO: figure out how to send get requests through this button*/}
                             <Button variant="outline-secondary" id="button-addon2" class="btn btn-primary">
-                                Button
+                                Search
                             </Button>
                         </InputGroup>
                     </Col>
