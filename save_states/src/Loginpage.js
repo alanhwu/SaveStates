@@ -6,7 +6,7 @@ import './Loginpage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
-class LoginPage extends Component {
+class Loginpage extends Component {
 
     render() {
         return (
@@ -50,4 +50,4 @@ class LoginPage extends Component {
 
 }
 
-export default LoginPage;
+export default Loginpage;

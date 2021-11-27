@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import logo from './logo.svg';
-import './Homepage.css';
-
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {FormControl, InputGroup} from "react-bootstrap";
+import { FormControl, InputGroup } from "react-bootstrap";
+
+import './Homepage.css';
+import logo from './logo.svg';
+
 class Homepage extends Component {
+
     render() {
         return (
             <Container fluid class="mx-auto">
@@ -23,12 +25,13 @@ class Homepage extends Component {
                             {/*TODO: figure out how to send get requests through this search bar*/}
                             <InputGroup className=" mt-3 mb-3">
                                 <FormControl
+                                    id="omnibox"
                                     placeholder="Search for Games"
                                     aria-label="Search for Games"
                                     aria-describedby="basic-addon2"
                                 />
                                 {/*TODO: figure out how to send get requests through this button*/}
-                                <Button variant="outline-secondary" id="button-addon2" class="btn btn-primary">
+                                <Button variant="outline-secondary" id="button-addon2" class="btn btn-primary" onClick={this.handleClick.bind()}>
                                     Search
                                 </Button>
                             </InputGroup>
@@ -36,8 +39,8 @@ class Homepage extends Component {
                         <Col md={2}/>
                     </Row>
                 </div>
-            );
-        }
+            </Container>
+        );
     }
 
     // Handles the button click
@@ -55,4 +58,4 @@ class Homepage extends Component {
 
 }
 
-export default HomePage;
+export default Homepage;
