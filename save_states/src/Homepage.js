@@ -23,7 +23,7 @@ class Homepage extends Component {
                         </Col>
                         {/*TODO: figure out how to sign out with the button*/}
                         <Col md={"auto"}>
-                            <Button className="Sign Up">Sign out</Button>
+                            <Link to="/signup"><Button className="Sign Up">Sign up</Button></Link>
                         </Col>
                         <Col/>
                     </Row>
