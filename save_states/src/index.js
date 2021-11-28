@@ -1,9 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import Homepage from './Homepage';
 import Gamepage from './Gamepage';
+import Userpage from './Userpage';
+import Login from './Login';
+
+import './App.scss';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -11,6 +18,8 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Homepage />}/>
       <Route path="/gamepage" element={<Gamepage />}/>
+      <Route path="/login" element={<Login />}/>
+      <Route path="/user" element = {<Userpage />}/>
     </Routes>
   </Router>,
   document.getElementById('root')

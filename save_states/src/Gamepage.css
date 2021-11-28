@@ -1,38 +1,27 @@
-.Gamepage {
+.Gamepage-navbar {
   text-align: center;
 }
 
-.Gamepage-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .Gamepage-logo {
-    animation: Gamepage-logo-spin infinite 20s linear;
-  }
+.Gamepage-img {
+  height: 10px;
 }
 
 .Gamepage-header {
-  /* background-color: #282c34; */
-  /* min-height: 100vh; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 80px;
+  text-align: center;
 }
 
-.Gamepage-link {
-  color: #61dafb;
+.Gamepage-text {
+  font-size: 20px;
+  text-align: left;
 }
 
-@keyframes Gamepage-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Gamepage-reviewHeader {
+  font-size: 40px;
+  text-align: center;
+}
+
+.Gamepage-review {
+  font-size: 30px;
+  text-align: left;
 }

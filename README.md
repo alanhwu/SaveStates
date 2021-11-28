@@ -12,7 +12,8 @@ git clone https://github.com/alanhwu/SaveStates.git
 cd SaveStates/save_states && npm install
 npm start
 ```
-Then visit `localhost:3000` in your browser of choice.
+To start the backend servers, run `node start_db.js`. Then visit
+`localhost:3000` in your browser of choice.
 
 ## How this project is organized
 The general file structure for this project is as follows:
@@ -21,6 +22,7 @@ README.md (You are here!)
 save_states/
 └─── package.json
 └─── package-lock.json
+└─── start_db.js
 └─── src/
       └─── index.js
       └─── Homepage.js
@@ -28,6 +30,9 @@ save_states/
       └─── ...
 └─── public/
       └─── logo.png
+      └─── ...
+└─── databases/
+      └─── user_info.db
       └─── ...
 ```
 
@@ -61,6 +66,18 @@ These files house the actual webpages themselves, and simply contain a function
 that returns the contents of the webpage. Of note is the `Link` XML tag, which
 allows for redirects between pages using the aforementioned `/` file tree schema
 for organizing the webpages.
+
+### `databases/`
+Contains the databases---will contain separate files to store information about
+the user and about various games.
+
+### `start_db.js`
+This file contains the script necessary to locally host our databases at
+`localhost:3001`. It currently supports adding username--password combinations
+to `user_info.db`, as well as querying `games.db` for game titles.
+* TODO: Make game search functionality better
+* TODO: Once login/sign up screens are distinct, write one function to query
+  `user_info.db` and one to append to it.
 
 ### `public/`
 As far as I can tell, this folder just contains resources that may be used by
