@@ -12,6 +12,7 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import reportWebVitals from './reportWebVitals';
+import User from "./User";
 
 ReactDOM.render(
   <Router>
@@ -19,7 +20,9 @@ ReactDOM.render(
       <Route path="/" element={<Homepage />}/>
       <Route path="/gamepage" element={<Gamepage />}/>
       <Route path="/login" element={<Login />}/>
-      <Route path="/user" element = {<Userpage />}/>
+      <Route path="/user" element = {<Userpage />}>
+        <Route path=":username" element={<User />} />
+      </Route>
     </Routes>
   </Router>,
   document.getElementById('root')
