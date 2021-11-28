@@ -4,10 +4,13 @@ const app = express();
 // Sets the database location relative to project root
 const games = new Datastore('databases/games.db');
 const user_info = new Datastore('databases/user_info.db');
+var cors = require('cors')
 
 // Start the database servers
 app.listen(3001, () => console.log('Databases started on port 3001'));
 app.use(express.json({limit: '1mb'}));
+
+app.use(cors())
 
 // Loads data if it exists, creates database otherwise
 games.loadDatabase();
