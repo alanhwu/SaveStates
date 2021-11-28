@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { Outlet, Link } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Navbar, Form, FormControl, Table } from 'react-bootstrap'
-import saveStatesNavbar from "./saveStatesNavbar";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Gamepage.css';
