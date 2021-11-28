@@ -6,19 +6,22 @@ import Homepage from './Homepage';
 import Gamepage from './Gamepage';
 import Userpage from './Userpage';
 import Login from './Login';
+import Game from "./Game"
+import User from "./User";
 
 import './App.scss';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import reportWebVitals from './reportWebVitals';
-import User from "./User";
 
 ReactDOM.render(
   <Router>
     <Routes>
       <Route path="/" element={<Homepage />}/>
-      <Route path="/gamepage" element={<Gamepage />}/>
+      <Route path="/game" element={<Gamepage />}>
+          <Route path=":gameName" element={<Game />} />
+      </Route>
       <Route path="/login" element={<Login />}/>
       <Route path="/user" element = {<Userpage />}>
         <Route path=":username" element={<User />} />
