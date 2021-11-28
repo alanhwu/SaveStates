@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import logo from './logo.svg';
-import './Loginpage.css';
+import './Signup.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import saveStatesNavbar from "./saveStatesNavbar";
 
-class Loginpage extends Component {
+class Signup extends Component {
 
     render() {
         return (
-            <div className="Loginpage">
-                <h1 className="">Log In</h1>
-                <header className="Loginpage-header">
-                    <img src={logo} className="Loginpage-logo" alt="logo" />
+            <div className="signup-page">
+                <Link to = "/"><h1 className="">SaveStates</h1></Link> {/* Import Jonah's navbar & make navbar so 
+                it accounts for guests*/}
+                <header className="Signup-flavortext">
+                    <label>Create a New Character</label>
                 </header>
-                <label className="description">Please enter your username and password</label>
+		<br />
+		<label className="Description">Create a username and secure password</label>
                 {/* Use placeholder here to show "ghost text". */}
                 <div>
                     <input id="username" placeholder="Username" />
@@ -24,13 +27,16 @@ class Loginpage extends Component {
                     <input id="password" type="password" placeholder="Password" />
                 </div>
                 {/* Needs bind in order to run only on click and not on page load!  */}
-                <Button className="login" onClick={this.handleClick.bind(this)}>Log Me In</Button>
+                <Link to = "/user"><Button className="signup" onClick={this.handleClick.bind()}>Create Account</Button></Link>
+                {/* TODO: For now this takes you to the user page but has no effect on the log in status, 
+                make it so that it actually logs you in to your own page */}
             </div>
         );
     }
 
     // Handles the button click
     handleClick() {
+        console.log("Handling the click!");
         // Grab the current value of the input field 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
@@ -50,4 +56,4 @@ class Loginpage extends Component {
 
 }
 
-export default Loginpage;
+export default Signup;
