@@ -16,9 +16,17 @@ class Homepage extends Component {
             <Container fluid class="mx-auto">
                 <div className="Homepage">
                     <h1>SaveStates</h1>
-                    <Link to="/login"><Button className="Login">Login</Button></Link>
-                    {/*TODO: figure out how to sign out with the button*/}
-                    <Button className="Sign out">Sign out</Button>
+                    <Row>
+                        <Col/>
+                        <Col md={"auto"}>
+                            <Link to="/login"><Button className="Login">Login</Button></Link>
+                        </Col>
+                        {/*TODO: figure out how to sign out with the button*/}
+                        <Col md={"auto"}>
+                            <Button className="Sign Up">Sign out</Button>
+                        </Col>
+                        <Col/>
+                    </Row>
                     <Row>
                         <Col md={2}/>
                         <Col className={"mx-auto"}>
@@ -31,7 +39,7 @@ class Homepage extends Component {
                                     aria-describedby="basic-addon2"
                                 />
                                 {/*TODO: figure out how to send get requests through this button*/}
-                                <Button variant="outline-secondary" id="button-addon2" class="btn btn-primary" onClick={this.handleClick.bind()}>
+                                <Button variant="outline-success" id="button-addon2" class="btn btn-primary" onClick={this.handleClick.bind()}>
                                     Search
                                 </Button>
                             </InputGroup>
