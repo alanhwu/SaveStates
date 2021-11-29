@@ -2,6 +2,7 @@
 const game = document.getElementById('game');
 const name = document.getElementById('name');
 
+
 const username = 'sadge';
 
 const url = 'http://localhost:3001/finduser/' + username;
