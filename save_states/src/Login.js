@@ -45,7 +45,6 @@ class Login extends Component{
         const username = document.getElementById('formBasicUsername').value;
         const password = document.getElementById('formBasicPassword').value;
 
-        const https = require('https')
         const options = {
             method: 'GET'
         }

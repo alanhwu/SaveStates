@@ -26,6 +26,19 @@ app.get('/findgame/:query', (request, response) => {
     });
 });
 
+//Handle query the username
+app.get('/finduser/:query', (request, response) => {
+    console.log("Looking for '" + request.params.query + "'!");
+    user_info.find({ Username: new RegExp(request.params.query) }, (err, data) => {
+        if (err) {
+            response.status(500).send(err.toString());
+            return;
+        }
+        response.json(data);
+        console.log(data);
+    });
+});
+
 // Handles appending things into the user_info database
 app.post('/api', (request, response) => {
     console.log('I got a request!');
