@@ -2,15 +2,16 @@
 const game = document.getElementById('game');
 const name = document.getElementById('name');
 
-const username = 'jedjed';
 
-const url = 'http://localhost:3001/currgame/' + username;
+const username = 'sadge';
+
+const url = 'http://localhost:3001/finduser/' + username;
 
 fetch(url)
     .then(res => res.json())
 	.then(json => {
-	    thisname = json.User;
-	    thisgame = json.Game;
+	    thisname = json[0].Username;
+	    thisgame = json[0].Game;
 	    console.log(thisgame);
 	    console.log(thisname);
 	    game.textContent = "My current game is " + thisgame;
