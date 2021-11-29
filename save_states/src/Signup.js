@@ -28,8 +28,12 @@ class Signup extends Component {
                     <input id="password" type="password" placeholder="Password" />
                 </div>
                 <br />
+                <div>
+                    <input id="passwordCheck" type="password" placeholder="Password (Again)" />
+                </div>
+                <br />
                 {/* Needs bind in order to run only on click and not on page load!  */}
-                <Link to = "/user"><Button className="signup" onClick={this.handleClick.bind()}>Create Account</Button></Link>
+                <Button className="signup" onClick={this.handleClick.bind()}>Create Account</Button>
                 {/* TODO: For now this takes you to the user page but has no effect on the log in status, 
                 make it so that it actually logs you in to your own page */}
             </div>
@@ -41,18 +45,32 @@ class Signup extends Component {
         // Grab the current value of the input field 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        const data = { username, password }; // Add more data here
-        const options = {
-            // It appears that this line tells the program to either post
-            // (write) or get (read) from the database.
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-        // Add to the database
-        fetch('http://localhost:3001/api', options);
+        const passwordCheck = document.getElementById('passwordCheck').value;
+
+        if(password !== passwordCheck)
+        {
+            alert("The two passwords are not the same. Try again");
+            return;
+        }
+        else
+        {
+            const data = { username, password }; // Add more data here, configure passwordCheck here
+            const options =
+            {
+                // It appears that this line tells the program to either post
+                // (write) or get (read) from the database.
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            // TODO: figure out how to link to userpage after this with the cookies intact
+            // Add to the database
+            fetch('http://localhost:3001/api', options);
+            window.location.href = "/user";
+        }
     }
 
 }
