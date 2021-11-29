@@ -1,11 +1,17 @@
-.Login-homeButton {
+/*.Login-page{
   text-align: center;
-}
+}*/
 
 .Login-username {
   text-align: center;
+  width: 25%
 }
 
 .Login-password {
   text-align: center;
+  width: 25%
+}
+
+.Login-button {
+  text-align: left;
 }

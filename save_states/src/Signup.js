@@ -23,9 +23,11 @@ class Signup extends Component {
                 <div>
                     <input id="username" placeholder="Username" />
                 </div>
+                <br />
                 <div>
                     <input id="password" type="password" placeholder="Password" />
                 </div>
+                <br />
                 {/* Needs bind in order to run only on click and not on page load!  */}
                 <Link to = "/user"><Button className="signup" onClick={this.handleClick.bind()}>Create Account</Button></Link>
                 {/* TODO: For now this takes you to the user page but has no effect on the log in status, 
@@ -36,11 +38,10 @@ class Signup extends Component {
 
     // Handles the button click
     handleClick() {
-        console.log("Handling the click!");
         // Grab the current value of the input field 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        const data = { username, password };
+        const data = { username, password }; // Add more data here
         const options = {
             // It appears that this line tells the program to either post
             // (write) or get (read) from the database.
