@@ -22,6 +22,17 @@ class Userpage extends Component {
         const playthroughs = {"Club Penguin": "I was a penguin! It was great!", "Farm Simulator": "I drove a tractor. It was tedious."};
         const friends=["JedJed", "kc", "Jonah", "Gumster", "tuna"]
         const friendList = friends.map((friend) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {friend} </div> </ListGroup.Item>)
+
+//	const response = fetch('http://localhost:3001/currgame/Gumster');
+	//	const data = response.json();
+
+	const myurl = 'http://localhost:3001/currgame/Gumster';
+	let currentGame = "asdf";
+
+	fetch(myurl)
+	    .then(response => response.json())
+	    .then(data => currentGame = data);
+	
         let playthroughHtml = [];
         for (const game in playthroughs) {
             playthroughHtml.push(this.playthroughFunc(game, playthroughs));
@@ -30,7 +41,8 @@ class Userpage extends Component {
             <Container>
                 {saveStatesNavbar("Hi")}
                 <div className='Userpage-header'>{user}</div>
-                <Row>
+		<p>Game in progress: {currentGame} </p>
+		<Row>
                     <Col>
                         <Card>
                             <Card.Body>
