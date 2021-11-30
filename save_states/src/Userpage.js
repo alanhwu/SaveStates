@@ -16,9 +16,10 @@ import portalImage from './images/portal.jpg';
 
 
 function Userpage() {
-
+    const currentUser = "Jonah";
     const playthroughs = [ "bruh" ];
-    const friendList = "bruh";
+    const friends = ["JedJed", "kc", "Tuna", "Kyle"];
+    const friendList = friends.map((friend) => <Link to={"/user?"+friend}><ListGroup.Item>{friend}</ListGroup.Item></Link>)
     const currentGame = "bruh";
     const backlogGames = "bruh";
     const [state, setState] = useState("");
@@ -43,7 +44,7 @@ function Userpage() {
     }
     return (
         <Container>
-            {saveStatesNavbar("Hi")}
+            {saveStatesNavbar(currentUser)}
             <div className='Userpage-header'>{state.username}</div>
             <p>Game in progress: {state.game} </p>
             <Row>
