@@ -16,12 +16,18 @@ import portalImage from './images/portal.jpg';
 
 
 function Userpage() {
-
+    const currentUser = "Jonah";
+    const jonahFollows=["Kyle", "JedJed"];
     const playthroughs = [ "bruh" ];
-    const friendList = "bruh";
+    const friends = ["JedJed", "kc", "Tuna", "Kyle"];
     const currentGame = "bruh";
-    const backlogGames = "bruh";
-    const [state, setState] = useState("");
+    const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
+    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>;
+    const [state, setState] = useState({
+        username: "",
+        backlog: []
+    });
+    ;
     const location = useLocation();
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
@@ -35,6 +41,46 @@ function Userpage() {
     });
 
 
+
+    //const backlog = state.backlog;
+    const backlogList = state.backlog.map(backlogFunc);
+    function friendItem(friend, currFollowers){
+        if (currFollowers.includes(friend)) {
+            return <Link to={"/user?" + friend}><ListGroup.Item>{friend}</ListGroup.Item></Link>
+        }
+        else{
+            return (<ListGroup.Item><Link to={"/user?" + friend}>{friend}</Link><Button className={"ms-4"}>+</Button></ListGroup.Item>)
+        }
+    }
+    function bigFollowButton(userPage, currUser, currUserFollowers){
+        if(userPage === currUser){
+            return;
+        }
+        else if(currUserFollowers.includes(userPage)){
+            return(
+                <Row>
+                    <Col />
+                    <Col xl={5}>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Unfollow</Button></div>
+                    </Col>
+                    <Col />
+                </Row>
+            )
+        }
+        else{
+            return(
+                <Row>
+                    <Col />
+                    <Col xl={5}>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Follow</Button></div>
+                    </Col>
+                    <Col />
+                </Row>
+            )
+        }
+    }
+
+
 //	const response = fetch('http://localhost:3001/currgame/Gumster');
 	//	const data = response.json();
     let playthroughHtml = [];
@@ -43,16 +89,42 @@ function Userpage() {
     }
     return (
         <Container>
-            {saveStatesNavbar("Hi")}
+            {saveStatesNavbar(currentUser)}
             <div className='Userpage-header'>{state.username}</div>
-            <p>Game in progress: {state.game} </p>
+            {bigFollowButton(state.username, currentUser, jonahFollows)}
+            <Row className={"mb-5"}>
+                <Col>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>
+                                Status
+                            </Card.Title>
+                            {state.userStatus}
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
+                            <ListGroup>
+                                {friends.map((friend) => friendItem(friend, jonahFollows))} {/*TODO: Make clickable to go to a game page*/}
+                            </ListGroup>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
             <Row>
                 <Col>
                     <Card>
                         <Card.Body>
                             <Card.Title class={"mb-3 Userpage-subheader"}>Backlog</Card.Title>
                             <ListGroup>
-                                {backlogGames} {/*TODO: Make clickable to go to a game page*/}
+                                {
+                                   // backlogList
+                                    //backlog.map(backlogGames)}
+                                    state.backlog.map(backlogFunc) /*TODO: Make clickable to go to a game page*/
+                                }
                             </ListGroup>
                         </Card.Body>
                     </Card>
@@ -63,16 +135,6 @@ function Userpage() {
                             <Card.Title class={"mb-3 Userpage-subheader"}>Playthroughs</Card.Title>
                             <ListGroup>
                                 {playthroughHtml} {/*TODO: Make clickable to go to a game page*/}
-                            </ListGroup>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Friends</Card.Title>
-                            <ListGroup>
-                                {friendList} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>
                         </Card.Body>
                     </Card>
