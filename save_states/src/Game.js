@@ -8,7 +8,6 @@ import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import portalImage from "./images/portal.jpg";
 import Button from "react-bootstrap/Button";
-import DiaryPage from "./DiaryPage";
 
 export default function Game(){
 

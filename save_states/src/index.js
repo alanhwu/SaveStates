@@ -14,7 +14,6 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import reportWebVitals from './reportWebVitals';
-import DiaryPage from "./DiaryPage";
 
 ReactDOM.render(
   <Router>
