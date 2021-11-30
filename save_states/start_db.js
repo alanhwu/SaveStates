@@ -61,6 +61,15 @@ app.get('/currgame/:query', (request, response) => {
     });
 });
 */
+// Handles adding new users into the database
+app.post('/adduser', (request, response) => {
+    console.log('I got a request!');
+    console.log(request.body);
+    const data = request.body;
+    user_info.insert(data);    
+    response.json(data);
+});
+
 //Handle query for reviews
 app.get('/reviews/:query', (request, response) => {
     console.log("Looking for '" + request.params.query + "'!");
@@ -113,6 +122,44 @@ app.post('/removefollower', (request, response) => {
     response.json(data);
 });
 
+// Handles adding a game to the backlog
+app.post('/addtobacklog', (request, response) => {
+    console.log('Adding to the backlog!');
+    const data = request.body;
+    console.log(data);
+    const user = data.username;
+    const game = data.game;
+
+    user_info.update(
+        // Find the user to update to
+        { username: user },
+        // Add the follower to their list of followers
+        { $addToSet: { backlog: game } },
+        {},
+        () => {}
+    );
+    response.json(data);
+});
+
+// Handles removing a game from the backlog
+app.post('/removefrombacklog', (request, response) => {
+    console.log('Removing a game from the backlog!');
+    const data = request.body;
+    console.log(data);
+    const user = data.username;
+    const game = data.game;
+
+    user_info.update(
+        // Find the user to update to
+        { username: user },
+        // Remove the follower from their list of followers
+        { $pull: { backlog: game } },
+        {},
+        () => {}
+    );
+    response.json(data);
+});
+
 // Handles changing the user's status
 app.post('/changestatus', (request, response) => {
     console.log('Setting the status!');
@@ -132,11 +179,3 @@ app.post('/changestatus', (request, response) => {
     response.json(data);
 });
 
-// Handles adding new users into the database
-app.post('/adduser', (request, response) => {
-    console.log('I got a request!');
-    console.log(request.body);
-    const data = request.body;
-    user_info.insert(data);    
-    response.json(data);
-});
