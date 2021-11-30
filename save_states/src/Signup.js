@@ -87,15 +87,13 @@ function Signup() {
 
 }
 
-function handleClick(username, password, passwordCheck) {
-    console.log("handling click");
+/* function handleClick(username, password, passwordCheck) {
     if (password !== passwordCheck) {
         alert("The two passwords are not the same. Try again");
         return;
     }
     else {
-        console.log("Inside the else part");
-        const data = { username, password }; // Add more data here, configure passwordCheck here
+        const data = { username, password }; // Add more data here, configure password
         console.log(data);
         const options = {
             // It appears that this line tells the program to either post
@@ -106,12 +104,11 @@ function handleClick(username, password, passwordCheck) {
             },
             body: JSON.stringify(data)
         };
-
         // TODO: figure out how to link to userpage after this with the cookies intact
         // Add to the database
         fetch('http://localhost:3001/adduser', options);
         window.location.href = "/user?" + username;
     }
-}
+} */
 
 export default Signup;

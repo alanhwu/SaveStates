@@ -35,7 +35,7 @@ app.get('/findgame/:query', (request, response) => {
 //Handle query the username
 app.get('/finduser/:query', (request, response) => {
     console.log("Looking for '" + request.params.query + "'!");
-    user_info.find({ Username: new RegExp(request.params.query) }, (err, data) => {
+    user_info.find({ username: new RegExp(request.params.query) }, (err, data) => {
         if (err) {
             response.status(500).send(err.toString());
             return;
@@ -69,8 +69,7 @@ app.get('/reviews/:query', (request, response) => {
             response.status(500).send(err.toString());
             return;
         }
-
-	response.json(data);
+        response.json(data);
         console.log(data);
 
     });

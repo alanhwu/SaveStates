@@ -26,12 +26,12 @@ function Userpage() {
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
         const myurl = 'http://localhost:3001/finduser/' + location.search.substring(1, location.search.length);
-        console.log(myurl);
         fetch(myurl)
             .then(response => response.json())
             .then(data => {
                 setState(data[0]);
             })
+        console.log(state);
     });
 
 
@@ -44,8 +44,8 @@ function Userpage() {
     return (
         <Container>
             {saveStatesNavbar("Hi")}
-            <div className='Userpage-header'>{state.Username}</div>
-            <p>Game in progress: {state.Password} </p>
+            <div className='Userpage-header'>{state.username}</div>
+            <p>Game in progress: {state.game} </p>
             <Row>
                 <Col>
                     <Card>
