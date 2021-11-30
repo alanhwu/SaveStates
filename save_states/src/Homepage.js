@@ -20,7 +20,6 @@ function Homepage(props) {
 
     const onUserChange = (event) => {
         userQuery = event.target.value;
-        console.log("/user?" + userQuery);
     }
 
     return (
@@ -62,7 +61,7 @@ function Homepage(props) {
                                 placeholder="Search for Users"
                                 aria-label="Search for Users"
                                 aria-describedby="basic-addon2"
-                                onChange={onUserChange}
+                                onChange={() => {window.location.href="/game?" + userQuery}}
                             />
                             {/*TODO: figure out how to send get requests through this button*/}
                                 <Button

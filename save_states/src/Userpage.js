@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -23,7 +23,7 @@ function Userpage() {
     const backlogGames = "bruh";
     const [state, setState] = useState("");
     const location = useLocation();
-    console.log(location);
+    {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
         const myurl = 'http://localhost:3001/finduser/' + location.search.substring(1, location.search.length);
         console.log(myurl);
