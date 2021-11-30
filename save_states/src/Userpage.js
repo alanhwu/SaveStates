@@ -14,10 +14,9 @@ import saveStatesNavbar from "./saveStatesNavbar";
 import portalImage from './images/portal.jpg';
 
 
-
 function Userpage() {
     const currentUser = "Jonah";
-    const jonahFollows=["Kyle", "JedJed"];
+    const jonahFollows=["Kyle", "jedjed"];
     const playthroughs = [ "bruh" ];
     const currentGame = "bruh";
     const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
@@ -32,6 +31,7 @@ function Userpage() {
         gameNames: [],
         gameArt: []
     });
+
     const location = useLocation();
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
@@ -46,7 +46,6 @@ function Userpage() {
             setState({
                 ...state,
                 username: data.username,
-                followers: data.followers,
                 library: data.library,
                 userStatus: data.userStatus,
                 followers: data.followers
@@ -91,6 +90,35 @@ function Userpage() {
             return (<ListGroup.Item>{friend}<Button className={"ms-4"}>+</Button></ListGroup.Item>)
         }
     }
+
+    function followUser(follower, username){
+        const options = {
+            // It appears that this line tells the program to either post
+            // (write) or get (read) from the database.
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"follower":follower, "username":username})
+        };
+        const url = "http://localhost:3001/addfollower";
+        fetch(url, options);
+    }
+
+    function unfollowUser(follower, username){
+        const options = {
+            // It appears that this line tells the program to either post
+            // (write) or get (read) from the database.
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"follower":follower, "username":username})
+        };
+        const url = "http://localhost:3001/removefollower";
+        fetch(url, options);
+    }
+
     function bigFollowButton(userPage, currUser, currUserFollowers){
         if(userPage === currUser){
             return;
@@ -100,7 +128,7 @@ function Userpage() {
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Unfollow</Button></div>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {unfollowUser(state.username, currentUser)}}>Unfollow</Button></div>
                     </Col>
                     <Col />
                 </Row>
@@ -111,12 +139,60 @@ function Userpage() {
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Follow</Button></div>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {followUser(state.username, currentUser)}}>Follow</Button></div>
                     </Col>
                     <Col />
                 </Row>
             )
         }
+
+    }
+
+    let statusQuery = useState("");
+    const onStatusChange = (event) => {
+        statusQuery = event.target.value;
+    }
+    function setStatusUI(loggedInuser){
+        if(loggedInuser === state.username){
+            return(
+                <InputGroup className=" mt-3 mb-3">
+                    <FormControl
+                        id="updatestatus"
+                        placeholder="Update your status"
+                        aria-label="Update your status"
+                        aria-describedby="basic-addon2"
+                        onChange={onStatusChange}
+                    />
+                    {/*TODO: figure out how to send get requests through this button*/}
+                    <Button
+                        variant="outline-primary"
+                        id="button-addon2"
+                        class="btn btn-primary"
+                        onClick={() => setStatus(statusQuery)}
+                    >
+                        Update
+                    </Button>
+                </InputGroup>
+            )
+        }
+    }
+
+    function setStatus(status){
+        let data = {"username":state.username, "userStatus":status};
+        const options = {
+            // It appears that this line tells the program to either post
+            // (write) or get (read) from the database.
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        fetch("http://localhost:3001/changestatus", options)
+        setState({
+            ...state,
+            userStatus: status
+        });
     }
 
 
@@ -139,13 +215,14 @@ function Userpage() {
                                 Status
                             </Card.Title>
                             {state.userStatus}
+                            {setStatusUI("Jonah")}
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card>
                         <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Follows</Card.Title>
                             <ListGroup>
                                 {state.followers.map((friend) => friendItem(friend, state.followers))} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>
@@ -192,5 +269,7 @@ function playthroughFunc(game, gameDir){
             <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>
     );
 }
+
+
 
 export default Userpage;
