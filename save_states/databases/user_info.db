@@ -1,4 +1,3 @@
 {"username":"Michael","password":"testing123","followers":[null],"backlog":[],"userStatus":"","_id":"6K8uwQbgEF6uKyLN"}
-{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Minecraft"],"diary":[]}
-{"username":"Kyle","password":"Chui","followers":[null],"backlog":[],"userStatus":"","_id":"r0EAx8vI5FWHbT6U"}
 {"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Minecraft"],"diary":[{"playthroughName":"","description":"","gameName":"","rating":"","startDate":"","endDate":"","entry":""}]}
+{"username":"Kyle","password":"Chui","followers":[null],"backlog":[],"userStatus":"","_id":"r0EAx8vI5FWHbT6U"}

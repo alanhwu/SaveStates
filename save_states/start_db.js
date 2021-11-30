@@ -45,22 +45,6 @@ app.get('/finduser/:query', (request, response) => {
     });
 });
 
-/*Handle query for user currentGame
-app.get('/currgame/:query', (request, response) => {
-    console.log("Looking for '" + request.params.query + "'!");
-    currents.find({ User: new RegExp(request.params.query) }, (err, data) => {
-        if (err) {
-            response.status(500).send(err.toString());
-            return;
-        }
-	let currgamequery = data[0].Game;
-//        response.json(game);
-	response.json(data[0]);
-        console.log(data[0]);
-	exports.game = currgamequery;
-    });
-});
-*/
 // Handles adding new users into the database
 app.post('/adduser', (request, response) => {
     console.log('I got a request!');
@@ -70,8 +54,16 @@ app.post('/adduser', (request, response) => {
     response.json(data);
 });
 
-//Handle query for reviews
-app.get('/reviews/:query', (request, response) => {
+// Adds review to the database
+app.post('/addreview', (request, response) => {
+    console.log('Adding an review!');
+    const data = request.body;
+    reviews.insert(data);
+    response.json(data);
+});
+
+// Handle query for reviews (by Game)
+app.get('/findreviews/:query', (request, response) => {
     console.log("Looking for '" + request.params.query + "'!");
     reviews.find({ Game: new RegExp(request.params.query) }, (err, data) => {
         if (err) {
@@ -214,24 +206,5 @@ app.post('/changestatus', (request, response) => {
         {},
         () => {}
     );
-    response.json(data);
-});
-
-// Handles adding a new entry
-app.post('/addentry', (request, response) => {
-    console.log('Adding a new entry!');
-    const data = request.body;
-    console.log(data);
-    const user = data.username;
-    const entry = data.entry;
-    user_info.update(
-        // Find the user to update to
-        { username: user },
-        // Add the playthrough to the diary
-        { $addToSet: { entries: entry } },
-        {},
-        () => {}
-    );
-    
     response.json(data);
 });
