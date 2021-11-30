@@ -23,6 +23,7 @@ function Userpage() {
     const backlogGames = "bruh";
     const [state, setState] = useState("");
     const location = useLocation();
+    const currUser = "currUser";
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
         const myurl = 'http://localhost:3001/finduser/' + location.search.substring(1, location.search.length);
@@ -70,7 +71,7 @@ function Userpage() {
                 <Col>
                     <Card>
                         <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Friends</Card.Title>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
                             <ListGroup>
                                 {friendList} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>

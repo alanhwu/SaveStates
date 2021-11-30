@@ -33,7 +33,7 @@ function Homepage(props) {
                     </Col>
                     {/*TODO: figure out how to sign out with the button*/}
                     <Col md={"auto"}>
-                        <Button className="Sign Up">Sign out</Button>
+                        <Button className="Sign Up">Sign Up</Button>
                     </Col>
                     <Col/>
                 </Row>
