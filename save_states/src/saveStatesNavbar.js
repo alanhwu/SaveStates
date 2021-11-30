@@ -1,3 +1,4 @@
+import { React, useState } from 'react';
 import {Col, FormControl, InputGroup, Navbar} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -40,8 +41,15 @@ function navigationSignup(userName){
     }
 }
 
-function saveStatesNavbar(userName){
+function SaveStatesNavbar(props, userName) {
     //userName ="";
+    let gameQuery = useState("");
+
+    const onGameChange = (event) => {
+        gameQuery = event.target.value;
+        console.log(gameQuery);
+    }
+
     return (
         <Navbar bg="dark" variant="dark">
             <Container fluid>
@@ -55,9 +63,15 @@ function saveStatesNavbar(userName){
                             placeholder="Search for Games"
                             classname="me-2"
                             aria-label="Search"
+                            onChange={onGameChange}
                         />
                         {/*TODO: figure out how to make searching work through the button*/}
-                        <Button variant="outline-success">Search</Button>
+                        <Button
+                            variant="outline-success"
+                            onClick={() => {window.location.href="/game?" + gameQuery}}
+                        >
+                            Search
+                        </Button>
                     </InputGroup>
                 </Col>
                 <div>
@@ -71,4 +85,5 @@ function saveStatesNavbar(userName){
         </Navbar>
     )
 }
-export default saveStatesNavbar;
+
+export default SaveStatesNavbar;
