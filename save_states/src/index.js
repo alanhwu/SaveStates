@@ -10,6 +10,7 @@ import Signup from './Signup'
 import Backlog from './Backlog';
 import NewPlaythrough from './NewPlaythrough';
 import NewEntry from './NewEntry';
+import Error from './Error';
 
 import './App.scss';
 import './index.css';
@@ -29,6 +30,7 @@ ReactDOM.render(
       <Route path="/backlog" element={<Backlog />}/>
       <Route path="/newplaythrough" element={<NewPlaythrough />}/>
       <Route path="/newentry" element={<NewEntry />}/>
+      <Route path="/error" element={<Error />}/>
 
     </Routes>
   </Router>,
