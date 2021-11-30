@@ -13,7 +13,19 @@ import './Userpage.css';
 import saveStatesNavbar from "./saveStatesNavbar";
 import portalImage from './images/portal.jpg';
 
-
+function followUser(follower, username){
+    const options = {
+        // It appears that this line tells the program to either post
+        // (write) or get (read) from the database.
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"follower":follower, "username":username})
+    };
+    const url = "http://localhost:3001/addfollower";
+    fetch(url, options);
+}
 
 function Userpage() {
     const currentUser = "Jonah";
@@ -22,12 +34,12 @@ function Userpage() {
     const friends = ["JedJed", "kc", "Tuna", "Kyle"];
     const currentGame = "bruh";
     const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
-    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>;
+    const backlogFunc  = (game) => <ListGroup.Item><div class={"Userpage-element mb-2"}><Link to={"/game?"+game}>{game}</Link></div><Image src={gameImages[game]} thumbnail fluid /></ListGroup.Item>;
     const [state, setState] = useState({
         username: "",
-        backlog: []
+        backlog: [],
+        followers:[]
     });
-    ;
     const location = useLocation();
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
@@ -38,12 +50,11 @@ function Userpage() {
                 setState(data[0]);
             })
         console.log(state);
-    });
+    }, []);
 
 
 
     //const backlog = state.backlog;
-    const backlogList = state.backlog.map(backlogFunc);
     function friendItem(friend, currFollowers){
         if (currFollowers.includes(friend)) {
             return <Link to={"/user?" + friend}><ListGroup.Item>{friend}</ListGroup.Item></Link>
@@ -72,12 +83,13 @@ function Userpage() {
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Follow</Button></div>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {followUser(state.username, currentUser)}}>Follow</Button></div>
                     </Col>
                     <Col />
                 </Row>
             )
         }
+
     }
 
 
@@ -91,7 +103,7 @@ function Userpage() {
         <Container>
             {saveStatesNavbar(currentUser)}
             <div className='Userpage-header'>{state.username}</div>
-            {bigFollowButton(state.username, currentUser, jonahFollows)}
+            {bigFollowButton(state.username, currentUser, state.followers)}
             <Row className={"mb-5"}>
                 <Col>
                     <Card>
@@ -132,7 +144,7 @@ function Userpage() {
                 <Col>
                     <Card>
                         <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Playthroughs</Card.Title>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Diary</Card.Title>
                             <ListGroup>
                                 {playthroughHtml} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>
@@ -153,5 +165,6 @@ function playthroughFunc(game, gameDir){
             <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>
     );
 }
+
 
 export default Userpage;
