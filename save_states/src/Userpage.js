@@ -17,11 +17,13 @@ import portalImage from './images/portal.jpg';
 
 function Userpage() {
     const currentUser = "Jonah";
-    const jonahFollows=["kc", "JedJed"];
+    const jonahFollows=["Kyle", "JedJed"];
     const playthroughs = [ "bruh" ];
     const friends = ["JedJed", "kc", "Tuna", "Kyle"];
     const currentGame = "bruh";
-    const backlogGames = "bruh";
+    const backlog = ["Minecraft", "Portal", "Terraria"];
+    const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
+    const backlogGames = backlog.map((game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>);
     const [state, setState] = useState("");
     const location = useLocation();
     {/* This code grabs the json from the database and stores it in state. */}
@@ -43,6 +45,33 @@ function Userpage() {
             return (<ListGroup.Item><Link to={"/user?" + friend}>{friend}</Link><Button className={"ms-4"}>+</Button></ListGroup.Item>)
         }
     }
+    function bigFollowButton(userPage, currUser, currUserFollowers){
+        if(userPage === currUser){
+            return;
+        }
+        else if(currUserFollowers.includes(userPage)){
+            return(
+                <Row>
+                    <Col />
+                    <Col xl={5}>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Unfollow</Button></div>
+                    </Col>
+                    <Col />
+                </Row>
+            )
+        }
+        else{
+            return(
+                <Row>
+                    <Col />
+                    <Col xl={5}>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Follow</Button></div>
+                    </Col>
+                    <Col />
+                </Row>
+            )
+        }
+    }
 
 
 //	const response = fetch('http://localhost:3001/currgame/Gumster');
@@ -55,13 +84,7 @@ function Userpage() {
         <Container>
             {saveStatesNavbar(currentUser)}
             <div className='Userpage-header'>{state.username}</div>
-            <Row>
-                <Col />
-                <Col xl={5}>
-                    <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Follow</Button></div>
-                </Col>
-                <Col />
-            </Row>
+            {bigFollowButton(state.username, currentUser, jonahFollows)}
             <p>Game in progress: {state.game} </p>
             <Row>
                 <Col>
