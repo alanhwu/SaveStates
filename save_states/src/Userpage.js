@@ -17,9 +17,9 @@ import portalImage from './images/portal.jpg';
 
 function Userpage() {
     const currentUser = "Jonah";
+    const jonahFollows=["kc", "JedJed"];
     const playthroughs = [ "bruh" ];
     const friends = ["JedJed", "kc", "Tuna", "Kyle"];
-    const friendList = friends.map((friend) => <Link to={"/user?"+friend}><ListGroup.Item>{friend}</ListGroup.Item></Link>)
     const currentGame = "bruh";
     const backlogGames = "bruh";
     const [state, setState] = useState("");
@@ -35,6 +35,15 @@ function Userpage() {
         console.log(state);
     });
 
+    function friendItem(friend, currFollowers){
+        if (currFollowers.includes(friend)) {
+            return <Link to={"/user?" + friend}><ListGroup.Item>{friend}</ListGroup.Item></Link>
+        }
+        else{
+            return (<ListGroup.Item><Link to={"/user?" + friend}>{friend}</Link><Button className={"ms-4"}>+</Button></ListGroup.Item>)
+        }
+    }
+
 
 //	const response = fetch('http://localhost:3001/currgame/Gumster');
 	//	const data = response.json();
@@ -46,6 +55,13 @@ function Userpage() {
         <Container>
             {saveStatesNavbar(currentUser)}
             <div className='Userpage-header'>{state.username}</div>
+            <Row>
+                <Col />
+                <Col xl={5}>
+                    <div className={"Userpage-subheader"}><Button className={"mx-auto"}>Follow</Button></div>
+                </Col>
+                <Col />
+            </Row>
             <p>Game in progress: {state.game} </p>
             <Row>
                 <Col>
@@ -71,9 +87,9 @@ function Userpage() {
                 <Col>
                     <Card>
                         <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Friends</Card.Title>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
                             <ListGroup>
-                                {friendList} {/*TODO: Make clickable to go to a game page*/}
+                                {friends.map((friend) => friendItem(friend, jonahFollows))} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>
                         </Card.Body>
                     </Card>
