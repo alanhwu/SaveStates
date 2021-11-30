@@ -1,40 +1,22 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
-
-import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import {Navbar, Form, FormControl, Table, Modal} from 'react-bootstrap'
+import React, {Component, useState} from 'react';
+import {useParams} from "react-router-dom";
 import saveStatesNavbar from "./saveStatesNavbar";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import {Modal, ListGroup, Table, Form} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import portalImage from "./images/portal.jpg";
+import Button from "react-bootstrap/Button";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Gamepage.css';
-import logo from './logo.svg';
-import portalImage from './images/portal.jpg';
+export default function Game(){
 
+    const params = useParams();
 
-function Gamepage() {
-    {/* Figure out what to get from here */}
-    const gameName = "Portal";
-    const userName = "VaultBoy101";
-    const rating = 9.33;
-    const publisher = "Valve";
-    const [state, setState] = useState("");
-    const location = useLocation();
-    {/* This code grabs the json from the database and stores it in state. */}
-    useEffect(() => {
-        const myurl = 'http://localhost:3001/findgame/' + location.search.substring(1, location.search.length);
-        console.log(myurl);
-        fetch(myurl)
-            .then(response => response.json())
-            .then(data => {
-                setState(data[0]);
-            })
-    });
-
+    let gameName = "Portal";
+    let userName = "VaultBoy101";
+    let rating = 9.33;
+    let publisher = "Valve";
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -42,38 +24,36 @@ function Gamepage() {
     let ratingButtons = ratingOptions.map((option) =>
         <Form.Check inline label={option} name={"ratingCheckbox"} type={"radio"}/>
     )
-
     return (
         <Container>
             {/*Navigation bar at the top, contains link to the homepage, search bar and logout button*/}
             {saveStatesNavbar((userName))}
             {/*Header for the name*/}
-            <div class = 'Gamepage-header'>{state.Name}</div>
+            <div class = 'Gamepage-header'>{params.gameName}</div>
             <div>
                 <Row>
                     <Col>
-                    {/*TODO: figure out how change the src image depending on the game*/}
-                    {/*Stupid idea: maybe we'll need to import every picture and just do an if statement?*/}
-                        <Image src={state.CoverArt} thumbnail/>
+                        {/*TODO: figure out how change the src image depending on the game*/}
+                        {/*Stupid idea: maybe we'll need to import every picture and just do an if statement?*/}
+                        <Image src={portalImage} thumbnail/>
                     </Col>
                     <Col>
                         <Row>
-                            <Col><div class="Gamepage-text">Rating: {state.AverageRating}</div></Col>
-                            <Col><div class="Gamepage-text">Publisher: {state.Publisher}</div></Col>
+                            <Col><div class="Gamepage-text">Rating: {rating}</div></Col>
+                            <Col><div class="Gamepage-text">Publisher: {publisher}</div></Col>
                         </Row>
                         {/*TODO: Figure out how to add to the backlog through this button. Probably need to be its own seperate page*/}
                         <Row><Button variant="primary">Add to backlog</Button></Row>
                         {/*TODO: Figure out how to add a new playthrough through this button. Probably need to be its own seperate page*/}
-                        ate page*/}
-                        <Row className='mt-1'><Button variant="primary" onClick={handleShow}>Add new playthrough</Button></Row>
+                        <Row className='mt-1'><Button variant="primary" onClick={handleShow}>Add a review</Button></Row>
                         <Modal show={show} onHide={handleClose} size={"lg"}>
                             <Modal.Body>
                                 <Container>
                                     {/*saveStatesNavbar(userName)*/}
-                                    <div className={"Gamepage-reviewHeader m-3"}>Add a playthrough</div>
+                                    <div className={"Gamepage-smallHeader m-3"}>Add a review</div>
                                     <Form>
                                         <Form.Control plaintext readOnly defaultValue={"Star rating"} className={"ms-3 Gamepage-text"} />
-                                        <div key={'inline-checkbox'} className="m-3 Gamepage-text">
+                                        <div key={`inline-checkbox`} className="m-3 Gamepage-text">
                                             {ratingButtons}
                                         </div>
                                         <Form.Group className={"m-3 Gamepage-text"} controlId={"reviewForm.reviewTitle«"}>
@@ -87,7 +67,7 @@ function Gamepage() {
                                         <Form.Check label={"This review contains spoilers"} type={"checkbox"} className={"m-3 Gamepage-text"}/>
                                     </Form>
                                 </Container>
-                            </Modal.Body>
+                                </Modal.Body>
                             <Modal.Footer>
                                 <Button type="submit" className="m-3 Gamepage-text btn-primary">
                                     Submit
@@ -98,10 +78,10 @@ function Gamepage() {
                         {/*TODO: Figure out how to edit current playthroughs through this button. Probably need to be its own seperate page*/}
                         <Row className='mt-1'><Button variant="primary">Edit current playthroughs</Button></Row>
                         <Row>
-                        <div class="Gamepage-text">Your playthroughs</div>
-                        {/*TODO: Figure out how to make this dynamic: IE how to add multiple tables and rows depending on how many entries there are*/}
-                        <Table striped bordered hover variant="dark">
-                            <tbody>
+                            <div class="Gamepage-text">Your playthroughs</div>
+                            {/*TODO: Figure out how to make this dynamic: IE how to add multiple tables and rows depending on how many entries there are*/}
+                            <Table striped bordered hover variant="dark">
+                                <tbody>
                                 <tr>
                                     <td>Fred</td>
                                     <td>11/20/19 - 12/26/19</td>
@@ -112,8 +92,8 @@ function Gamepage() {
                                     <td>02/16/02 - 11/26/2021</td>
                                     <td>Not done</td>
                                 </tr>
-                            </tbody>
-                        </Table>
+                                </tbody>
+                            </Table>
                         </Row>
                     </Col>
                 </Row>
@@ -126,6 +106,13 @@ function Gamepage() {
             </div>
         </Container>
     );
-}
+};
 
-export default Gamepage;
+function playthroughFunc(game, gameDir){
+    const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
+    return (
+        <ListGroup.Item> <div class = {"Userpage-element mb-2"}> {game} </div>
+            <div class={"mb-2"}> {gameDir[game]} </div>
+            <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>
+    );
+}
