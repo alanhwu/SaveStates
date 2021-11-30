@@ -9,6 +9,27 @@ import { FormControl, InputGroup } from "react-bootstrap";
 import './Homepage.css';
 import logo from './logo.svg';
 
+// show the login button if the user is not logged in
+// show the signout button if the user is logged in
+function loginButton(userName) {
+    // if the user is not logged in, show log in button
+    if(userName == ""){
+        return <Button href="login" className="login">Login</Button>;
+    }
+    // if the user is logged in, show logout button
+    // TODO: figure out logging out
+    return <Button href="logout" className="logout">Logout</Button>
+
+}
+
+function signupButton(userName) {
+    // if the user is not logged in, DO show signup button
+    if(userName == ""){
+        return <Button href="signup" className="signup">Signup</Button>
+    }
+    // if the user is logged in, do not show anything
+    return;
+}
 function Homepage(props) {
 
     let gameQuery = useState("");
@@ -22,6 +43,9 @@ function Homepage(props) {
         userQuery = event.target.value;
     }
 
+    // TODO: figure out how to get the userName of the user here
+    const userName = "";
+
     return (
         <Container fluid class="mx-auto">
             <div className="Homepage">
@@ -29,11 +53,10 @@ function Homepage(props) {
                 <Row>
                     <Col/>
                     <Col md={"auto"}>
-                        <Link to="/login"><Button className="Login">Login</Button></Link>
+                        {loginButton(userName)}
                     </Col>
-                    {/*TODO: figure out how to sign out with the button*/}
                     <Col md={"auto"}>
-                        <Button className="Sign Up">Sign out</Button>
+                        {signupButton(userName)}
                     </Col>
                     <Col/>
                 </Row>
