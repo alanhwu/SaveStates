@@ -217,58 +217,21 @@ app.post('/changestatus', (request, response) => {
     response.json(data);
 });
 
-// Handles adding a new playthrough
-app.post('/addplaythrough', (request, response) => {
-    console.log('Adding a new playthrough!');
+// Handles adding a new entry
+app.post('/addentry', (request, response) => {
+    console.log('Adding a new entry!');
     const data = request.body;
     console.log(data);
     const user = data.username;
+    const entry = data.entry;
     user_info.update(
         // Find the user to update to
         { username: user },
         // Add the playthrough to the diary
-        { $addToSet: { diary: {
-            "playthroughName": "",
-            "description": "",
-            "gameName": "",
-            "rating": "",
-            "startDate": "",
-            "endDate": "",
-            "entry": ""
-        } } },
+        { $addToSet: { entries: entry } },
         {},
         () => {}
     );
     
     response.json(data);
-});
-
-// Handles adding an entry to an existing playthrough
-app.post('/addtoplaythrough', (request, response) => {
-    console.log('Adding to a playthrough!');
-    const data = { 'baskets.apples': 4 };
-    // console.log(data);
-    /* const user = data.username;
-    const hash = data.hash;
-    const entry = data.entry; */
-
-    /* user_info.update(
-        // Find the user to update to
-        { diary.hash: hash },
-        // Add the game to their backlog
-        { $push: { diary.entries: entry } },
-        {},
-        () => {}
-    ); */
-    /* user_info.update({ "baskets.apples": 4 }, { $set: { "baskets.$.bananas": 5 } }, {}, function () {
-        console.log("updating");
-    // Now document will be updated to { _id: 'id7', baskets: [{ 'apples': 4, 'bananas': 5 }, { 'apples': 8, 'bananas': 2 }] }
-    }); */
-    /* user_info.update({ "baskets.apples": 4 }, { $set: { "baskets.$.apples": 20 } }, {}, (err, data) => {
-        if (err) {
-            response.status(500).send(err.toString());
-            return;
-        }
-        console.log(data);
-    }); */
 });
