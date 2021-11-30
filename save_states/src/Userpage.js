@@ -85,7 +85,28 @@ function Userpage() {
             {saveStatesNavbar(currentUser)}
             <div className='Userpage-header'>{state.username}</div>
             {bigFollowButton(state.username, currentUser, jonahFollows)}
-            <p>Game in progress: {state.game} </p>
+            <Row className={"mb-5"}>
+                <Col>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>
+                                Status
+                            </Card.Title>
+                            {state.userStatus}
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
+                            <ListGroup>
+                                {friends.map((friend) => friendItem(friend, jonahFollows))} {/*TODO: Make clickable to go to a game page*/}
+                            </ListGroup>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
             <Row>
                 <Col>
                     <Card>
@@ -103,16 +124,6 @@ function Userpage() {
                             <Card.Title class={"mb-3 Userpage-subheader"}>Playthroughs</Card.Title>
                             <ListGroup>
                                 {playthroughHtml} {/*TODO: Make clickable to go to a game page*/}
-                            </ListGroup>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
-                            <ListGroup>
-                                {friends.map((friend) => friendItem(friend, jonahFollows))} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>
                         </Card.Body>
                     </Card>
