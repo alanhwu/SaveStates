@@ -50,7 +50,12 @@ function Homepage(props) {
                                 onChange={onGameChange}
                             />
                             {/*TODO: figure out how to send get requests through this button*/}
-                            <Button variant="outline-success" id="button-addon2" class="btn btn-primary">
+                            <Button
+                                variant="outline-success"
+                                id="button-addon2"
+                                class="btn btn-primary"
+                                onClick={() => {window.location.href="/game?" + gameQuery}}
+                            >
                                 Search
                             </Button>
                         </InputGroup>
@@ -61,7 +66,7 @@ function Homepage(props) {
                                 placeholder="Search for Users"
                                 aria-label="Search for Users"
                                 aria-describedby="basic-addon2"
-                                onChange={() => {window.location.href="/game?" + userQuery}}
+                                onChange={onUserChange}
                             />
                             {/*TODO: figure out how to send get requests through this button*/}
                                 <Button
