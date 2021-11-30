@@ -50,8 +50,8 @@ function Gamepage() {
                     </Col>
                     <Col>
                         <Row>
-                            <Col><div class="Gamepage-text">Rating: {rating}</div></Col>
-                            <Col><div class="Gamepage-text">Publisher: {publisher}</div></Col>
+                            <Col><div class="Gamepage-text">Rating: {state.AverageRating}</div></Col>
+                            <Col><div class="Gamepage-text">Publisher: {state.Publisher}</div></Col>
                         </Row>
                         {/*TODO: Figure out how to add to the backlog through this button. Probably need to be its own seperate page*/}
                         <Row><Button variant="primary">Add to backlog</Button></Row>
