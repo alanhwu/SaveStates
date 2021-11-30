@@ -20,7 +20,6 @@ ReactDOM.render(
       <Route path="/" element={<Homepage />}/>
       <Route path="/game" element={<Gamepage />}/>
       <Route path="/login" element={<Login />}/>
-      // <Route path="/user/:query" element={<Userpage />}/>
       <Route path="/user" element={<Userpage />}/>
       <Route path="/signup" element={<Signup />}/>
 

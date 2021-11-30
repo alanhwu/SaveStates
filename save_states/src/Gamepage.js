@@ -22,7 +22,14 @@ function Gamepage() {
     const userName = "VaultBoy101";
     const rating = 9.33;
     const publisher = "Valve";
-    const [state, setState] = useState("");
+    const [state, setState] = useState({
+        Name: "",
+        CoverArt: "",
+        AverageRating: -1,
+        Genre: "",
+        ReleaseDate: "",
+        Publisher: ""
+    });
     const location = useLocation();
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
@@ -33,7 +40,7 @@ function Gamepage() {
             .then(data => {
                 setState(data[0]);
             })
-    });
+    }, []);
 
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
