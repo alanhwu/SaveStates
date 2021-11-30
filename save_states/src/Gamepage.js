@@ -29,35 +29,36 @@ class Entry {
 }
 
 function RenderTable(entries) {
+    let indexClicked = 0;
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
         <Table striped bordered hover variant="dark">
                 <tbody>
-                    {entries.map(entry => 
+                    {entries.map((entry, index) => 
                         <tr>
                             <td>{entry.user}</td>
                             <td>{entry.name}</td>
                             <td>{entry.date}</td>
                             <td>
                                 <Button variant="primary" onClick={handleShow}>
-                                    Open body
+                                    Open description
                                 </Button>
-                                <Modal show={show} onHide={handleClose}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>{entry.name}</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>{entry.body}</Modal.Body>
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                                        </Button>
-                                    </Modal.Footer>
-                                </Modal>
                             </td>
                          </tr>
                         )}
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>{entries[indexClicked].name}</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>{entries[indexClicked].body}</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </tbody>
         </Table>
     )
