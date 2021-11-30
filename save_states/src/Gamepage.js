@@ -18,9 +18,7 @@ class Gamepage extends Component {
         let rating = 9.33;
         let publisher = "Valve";
         return (
-            <Container>
                 <Outlet />
-            </Container>
         );
     }
 }

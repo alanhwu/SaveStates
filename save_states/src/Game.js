@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, {Component, useState} from 'react';
 import {useParams} from "react-router-dom";
 import saveStatesNavbar from "./saveStatesNavbar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {Card, ListGroup, Table} from "react-bootstrap";
+import {Modal, ListGroup, Table, Form} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import portalImage from "./images/portal.jpg";
 import Button from "react-bootstrap/Button";
+import DiaryPage from "./DiaryPage";
 
 export default function Game(){
 
@@ -17,6 +18,13 @@ export default function Game(){
     let userName = "VaultBoy101";
     let rating = 9.33;
     let publisher = "Valve";
+    const[show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    let ratingOptions = [1,2,3,4,5,6,7,8,9,10];
+    let ratingButtons = ratingOptions.map((option) =>
+        <Form.Check inline label={option} name={"ratingCheckbox"} type={"radio"}/>
+    )
     return (
         <Container>
             {/*Navigation bar at the top, contains link to the homepage, search bar and logout button*/}
@@ -38,7 +46,36 @@ export default function Game(){
                         {/*TODO: Figure out how to add to the backlog through this button. Probably need to be its own seperate page*/}
                         <Row><Button variant="primary">Add to backlog</Button></Row>
                         {/*TODO: Figure out how to add a new playthrough through this button. Probably need to be its own seperate page*/}
-                        <Row className='mt-1'><Button variant="primary">Add new playthrough</Button></Row>
+                        <Row className='mt-1'><Button variant="primary" onClick={handleShow}>Add new playthrough</Button></Row>
+                        <Modal show={show} onHide={handleClose} size={"lg"}>
+                            <Modal.Body>
+                                <Container>
+                                    {/*saveStatesNavbar(userName)*/}
+                                    <div className={"Gamepage-smallHeader m-3"}>Add a review</div>
+                                    <Form>
+                                        <Form.Control plaintext readOnly defaultValue={"Star rating"} className={"ms-3 Gamepage-text"} />
+                                        <div key={`inline-checkbox`} className="m-3 Gamepage-text">
+                                            {ratingButtons}
+                                        </div>
+                                        <Form.Group className={"m-3 Gamepage-text"} controlId={"reviewForm.reviewTitle«"}>
+                                            <Form.Label>Title</Form.Label>
+                                            <Form.Control type={"text"} />
+                                        </Form.Group>
+                                        <Form.Group className={"m-3 Gamepage-text"} controlId="reviewForm.mainText">
+                                            <Form.Label>Review</Form.Label>
+                                            <Form.Control as={"textarea"} rows={9} placeholder={"Review of "+gameName}/>
+                                        </Form.Group>
+                                        <Form.Check label={"This review contains spoilers"} type={"checkbox"} className={"m-3 Gamepage-text"}/>
+                                    </Form>
+                                </Container>
+                                </Modal.Body>
+                            <Modal.Footer>
+                                <Button type="submit" className="m-3 Gamepage-text btn-primary">
+                                    Submit
+                                </Button>
+                                <Button onClick={handleClose}> Close </Button>
+                            </Modal.Footer>
+                        </Modal>
                         {/*TODO: Figure out how to edit current playthroughs through this button. Probably need to be its own seperate page*/}
                         <Row className='mt-1'><Button variant="primary">Edit current playthroughs</Button></Row>
                         <Row>
