@@ -79,7 +79,7 @@ app.get('/reviews/:query', (request, response) => {
 
 
 // Handles appending things into the user_info database
-app.post('/api', (request, response) => {
+app.post('/adduser', (request, response) => {
     console.log('I got a request!');
     console.log(request.body);
     const data = request.body;
