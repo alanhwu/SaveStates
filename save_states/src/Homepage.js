@@ -26,6 +26,7 @@ function Homepage(props) {
         <Container fluid class="mx-auto">
             <div className="Homepage">
                 <h1>SaveStates</h1>
+		<h2>Hi {global.user}</h2>
                 <Row>
                     <Col/>
                     <Col md={"auto"}>
