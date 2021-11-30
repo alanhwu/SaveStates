@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 
@@ -19,37 +19,76 @@ function Userpage() {
     const currentUser = "Jonah";
     const jonahFollows=["Kyle", "JedJed"];
     const playthroughs = [ "bruh" ];
-    const friends = ["JedJed", "kc", "Tuna", "Kyle"];
     const currentGame = "bruh";
     const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
     const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>;
     const [state, setState] = useState({
         username: "",
-        backlog: []
+        password: "",
+        userStatus: "",
+        followers: [],
+        backlog: [],
+        library: [],
+        gameNames: [],
+        gameArt: []
     });
-    ;
     const location = useLocation();
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
         const myurl = 'http://localhost:3001/finduser/' + location.search.substring(1, location.search.length);
-        fetch(myurl)
-            .then(response => response.json())
-            .then(data => {
-                setState(data[0]);
-            })
-        console.log(state);
-    });
+        const getData = async () => {
+            const data = await fetch(myurl)
+                .then(response => response.json())
+                .then(data => {
+                    return data[0];
+                })
+            console.log(data);
+            setState({
+                ...state,
+                username: data.username,
+                followers: data.followers,
+                library: data.library,
+                userStatus: data.userStatus,
+                followers: data.followers
+            });
+            // .catch(console.log("Error user not found"));
+
+            for (let i = 0; i < state.library.length; i++) {
+                let gameurl = 'http://localhost:3001/findgame/' + state.library[i];
+                console.log(gameurl);
+                const data = await fetch(gameurl)
+                    .then(response => response.json())
+                    .then(data => {
+                    const updatedGameNames = state.gameNames.slice();
+                    const updatedGameArt = state.gameArt.slice();
+                    console.log(i + ": " + state.gameNames);
+                    console.log("name: " + data[0].Name);
+                    updatedGameNames.push(data[0].Name);
+                    console.log(updatedGameNames);
+                    updatedGameArt.push(data[0].CoverArt);
+                    setState({
+                        ...state,
+                        gameNames: updatedGameNames,
+                        gameArt: updatedGameArt
+                    });
+                })
+            }
+        }
+
+        getData();
+    }, []);
 
 
+    console.log(state);
 
     //const backlog = state.backlog;
     const backlogList = state.backlog.map(backlogFunc);
     function friendItem(friend, currFollowers){
         if (currFollowers.includes(friend)) {
-            return <Link to={"/user?" + friend}><ListGroup.Item>{friend}</ListGroup.Item></Link>
+            return <a href={"/user?" + friend}><ListGroup.Item>{friend}</ListGroup.Item></a>
         }
         else{
-            return (<ListGroup.Item><Link to={"/user?" + friend}>{friend}</Link><Button className={"ms-4"}>+</Button></ListGroup.Item>)
+            return (<ListGroup.Item>{friend}<Button className={"ms-4"}>+</Button></ListGroup.Item>)
         }
     }
     function bigFollowButton(userPage, currUser, currUserFollowers){
@@ -108,7 +147,7 @@ function Userpage() {
                         <Card.Body>
                             <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
                             <ListGroup>
-                                {friends.map((friend) => friendItem(friend, jonahFollows))} {/*TODO: Make clickable to go to a game page*/}
+                                {state.followers.map((friend) => friendItem(friend, state.followers))} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>
                         </Card.Body>
                     </Card>
