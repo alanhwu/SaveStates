@@ -133,7 +133,7 @@ app.post('/addtobacklog', (request, response) => {
     user_info.update(
         // Find the user to update to
         { username: user },
-        // Add the follower to their list of followers
+        // Add the game to their backlog
         { $addToSet: { backlog: game } },
         {},
         () => {}
@@ -152,8 +152,46 @@ app.post('/removefrombacklog', (request, response) => {
     user_info.update(
         // Find the user to update to
         { username: user },
-        // Remove the follower from their list of followers
+        // Remove the game from their backlog
         { $pull: { backlog: game } },
+        {},
+        () => {}
+    );
+    response.json(data);
+});
+
+// Handles adding a game to the user's library
+app.post('/addtolibrary', (request, response) => {
+    console.log('Adding to the library!');
+    const data = request.body;
+    console.log(data);
+    const user = data.username;
+    const game = data.game;
+
+    user_info.update(
+        // Find the user to update to
+        { username: user },
+        // Add the game to their list of followers
+        { $addToSet: { library: game } },
+        {},
+        () => {}
+    );
+    response.json(data);
+});
+
+// Handles removing a game from the library
+app.post('/removefromlibrary', (request, response) => {
+    console.log('Removing a game from the library!');
+    const data = request.body;
+    console.log(data);
+    const user = data.username;
+    const game = data.game;
+
+    user_info.update(
+        // Find the user to update to
+        { username: user },
+        // Remove the game from their library
+        { $pull: { library: game } },
         {},
         () => {}
     );
