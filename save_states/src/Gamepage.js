@@ -15,6 +15,30 @@ import './Gamepage.css';
 import logo from './logo.svg';
 import portalImage from './images/portal.jpg';
 
+// Entry class
+// Will end up needing an array of Entries
+class Entry {
+    constructor(user, game, name, date, body)
+    {
+        this.user = user;
+        this.game = game;
+        this.name = name;
+        this.date = date;
+        this.body = body;
+    }
+}
+
+function renderEntry(entry) {
+    return (
+        <tr>
+            <td>{entry.user}</td>
+            <td>{entry.name}</td>
+            <td>{entry.date}</td>
+            {/*TODO: make the button link popout the entry*/}
+            <td>Button</td>
+        </tr>
+    )
+}
 
 function Gamepage() {
     {/* Figure out what to get from here */}
@@ -42,6 +66,11 @@ function Gamepage() {
     let ratingButtons = ratingOptions.map((option) =>
         <Form.Check inline label={option} name={"ratingCheckbox"} type={"radio"}/>
     )
+
+    const entry1 = new Entry("Kyle", "Mario", "Entry 1", "11/16/21", "Mario is pretty cool");
+    const entry2 = new Entry("jedjed", "Mario", "Starting mario!", "11/30/2021", "I love cappy!");
+    const entry3 = new Entry("VaultBoy101", "Fallout 76", "Thoughts on Fallout 76", "10/22/2021", "I don't really like this game");
+    const entries = [entry1, entry2, entry3];
 
     return (
         <Container>
@@ -94,29 +123,19 @@ function Gamepage() {
                                 <Button onClick={handleClose}> Close </Button>
                             </Modal.Footer>
                         </Modal>
-                        {/*TODO: Figure out how to edit current playthroughs through this button. Probably need to be its own seperate page*/}
-                        <Row className='mt-1'><Button variant="primary">Edit current playthroughs</Button></Row>
                         <Row>
-                        <div class="Gamepage-text">Your playthroughs</div>
+                        <div class="Gamepage-text">User playthroughs</div>
                         {/*TODO: Figure out how to make this dynamic: IE how to add multiple tables and rows depending on how many entries there are*/}
                         <Table striped bordered hover variant="dark">
                             <tbody>
-                                <tr>
-                                    <td>Fred</td>
-                                    <td>11/20/19 - 12/26/19</td>
-                                    <td>Not done</td>
-                                </tr>
-                                <tr>
-                                    <td>Kyle</td>
-                                    <td>02/16/02 - 11/26/2021</td>
-                                    <td>Not done</td>
-                                </tr>
+                                {entries.map(entry => renderEntry(entry))}
                             </tbody>
                         </Table>
                         </Row>
                     </Col>
                 </Row>
             </div>
+
             {/*Divide for User Reviews*/}
             {/*TODO: figure out how to output different reviews based on which game we are looking at*/}
             <div>
