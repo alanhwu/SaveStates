@@ -42,14 +42,22 @@ function Homepage(props) {
     const onUserChange = (event) => {
         userQuery = event.target.value;
     }
-
+    
     // TODO: figure out how to get the userName of the user here
-    const userName = "";
+    const userName = global.user;
 
+    var loggedin;
+    if(global.user == null){
+	loggedin = "Please login or sign up!";
+    }else{
+	loggedin = "Hello " + global.user + "!";
+    }
+    
     return (
         <Container fluid class="mx-auto">
             <div className="Homepage">
                 <h1>SaveStates</h1>
+		<h2>{loggedin}</h2>
                 <Row>
                     <Col/>
                     <Col md={"auto"}>
