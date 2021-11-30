@@ -17,9 +17,10 @@ ReactDOM.render(
   <Router>
     <Routes>
       <Route path="/" element={<Homepage />}/>
-      <Route path="/gamepage" element={<Gamepage />}/>
+      <Route path="/game" element={<Gamepage />}/>
       <Route path="/login" element={<Login />}/>
-      <Route path="/user" element = {<Userpage />}/>
+      // <Route path="/user/:query" element={<Userpage />}/>
+      <Route path="/user" element={<Userpage />}/>
     </Routes>
   </Router>,
   document.getElementById('root')
