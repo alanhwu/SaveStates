@@ -25,7 +25,7 @@ function loginButton(userName) {
 function signupButton(userName) {
     // if the user is not logged in, DO show signup button
     if(userName == ""){
-        return <Button href="signup" className="signup">Signup</Button>
+        return <Button href="signup" className="signup">Sign Up</Button>
     }
     // if the user is logged in, do not show anything
     return;
@@ -50,12 +50,19 @@ function Homepage(props) {
         <Container fluid class="mx-auto">
             <div className="Homepage">
                 <h1>SaveStates</h1>
+                <br /> <br />
+                <h1>Player One Start</h1>
+                <br />
                 <Row>
                     <Col/>
                     <Col md={"auto"}>
+                        <label className='flavortext'>Select</label>
+                        <br />
                         {loginButton(userName)}
                     </Col>
                     <Col md={"auto"}>
+                        <label className='flavortext'>Start</label>
+                        <br />
                         {signupButton(userName)}
                     </Col>
                     <Col/>
