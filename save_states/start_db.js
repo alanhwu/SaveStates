@@ -85,7 +85,7 @@ app.post('/addfollower', (request, response) => {
 
     user_info.update(
         // Find the user to update to
-        { username: new RegExp(user) },
+        { username: user },
         // Add the follower to their list of followers
         { $addToSet: { followers: follower } },
         {},
@@ -107,6 +107,25 @@ app.post('/removefollower', (request, response) => {
         { username: user },
         // Remove the follower from their list of followers
         { $pull: { followers: follower } },
+        {},
+        () => {}
+    );
+    response.json(data);
+});
+
+// Handles changing the user's status
+app.post('/changestatus', (request, response) => {
+    console.log('Setting the status!');
+    const data = request.body;
+    console.log(data);
+    const user = data.username;
+    const userStatus = data.userStatus;
+
+    user_info.update(
+        // Find the user to update to
+        { username: user },
+        // Change the user's status
+        { $set: { userStatus: userStatus } },
         {},
         () => {}
     );
