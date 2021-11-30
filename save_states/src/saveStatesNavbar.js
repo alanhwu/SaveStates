@@ -2,6 +2,8 @@ import {Col, FormControl, InputGroup, Navbar} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
+
+// for showing the username if the user is logged in
 function navigationUser(userName){
     // if the user is not logged in
     if(userName == "") {
@@ -12,9 +14,11 @@ function navigationUser(userName){
     }
 }
 
+// for showing the login button if the user is not logged in
+// and for showing the logout button if the user is logged in
 function navigationButton(userName){
     let theButton;
-    // if the user is not logged in
+    // if the user is not logged in then show login button
     if(userName == "") {
         theButton = <Button href="/login" className="login">Login</Button>;
     }
@@ -25,7 +29,19 @@ function navigationButton(userName){
     return theButton;
 }
 
+// for showing the signup button if the user is not logged in
+function navigationSignup(userName){
+    // if the user is not logged in then show sign up button
+    if(userName == "") {
+        return <Button href="/signup" className="signup">Sign up</Button>;
+    }
+    else {
+        return;
+    }
+}
+
 function saveStatesNavbar(userName){
+    //userName ="";
     return (
         <Navbar bg="dark" variant="dark">
             <Container fluid>
@@ -46,6 +62,9 @@ function saveStatesNavbar(userName){
                 </Col>
                 <div>
                     {navigationUser(userName)}
+                    {navigationSignup(userName)}
+                    {/*TODO: INSERT PADDING HERE */}
+                    &nbsp;
                     {navigationButton(userName)}
                 </div>
             </Container>
