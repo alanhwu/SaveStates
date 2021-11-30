@@ -21,10 +21,13 @@ function Userpage() {
     const playthroughs = [ "bruh" ];
     const friends = ["JedJed", "kc", "Tuna", "Kyle"];
     const currentGame = "bruh";
-    const backlog = ["Minecraft", "Portal", "Terraria"];
     const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
-    const backlogGames = backlog.map((game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>);
-    const [state, setState] = useState("");
+    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>;
+    const [state, setState] = useState({
+        username: "",
+        backlog: []
+    });
+    ;
     const location = useLocation();
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
@@ -37,6 +40,10 @@ function Userpage() {
         console.log(state);
     });
 
+
+
+    //const backlog = state.backlog;
+    const backlogList = state.backlog.map(backlogFunc);
     function friendItem(friend, currFollowers){
         if (currFollowers.includes(friend)) {
             return <Link to={"/user?" + friend}><ListGroup.Item>{friend}</ListGroup.Item></Link>
@@ -113,7 +120,11 @@ function Userpage() {
                         <Card.Body>
                             <Card.Title class={"mb-3 Userpage-subheader"}>Backlog</Card.Title>
                             <ListGroup>
-                                {backlogGames} {/*TODO: Make clickable to go to a game page*/}
+                                {
+                                   // backlogList
+                                    //backlog.map(backlogGames)}
+                                    state.backlog.map(backlogFunc) /*TODO: Make clickable to go to a game page*/
+                                }
                             </ListGroup>
                         </Card.Body>
                     </Card>
