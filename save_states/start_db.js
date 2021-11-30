@@ -75,9 +75,45 @@ app.get('/reviews/:query', (request, response) => {
     });
 });
 
+// Handles adding a follower to an existing user
+app.post('/addfollower', (request, response) => {
+    console.log('I got a follower!');
+    const data = request.body;
+    console.log(data);
+    const user = data.username;
+    const follower = data.follower;
 
+    user_info.update(
+        // Find the user to update to
+        { username: new RegExp(user) },
+        // Add the follower to their list of followers
+        { $addToSet: { followers: follower } },
+        {},
+        () => {}
+    );
+    response.json(data);
+});
 
-// Handles appending things into the user_info database
+// Handles removing a follower from an existing user
+app.post('/removefollower', (request, response) => {
+    console.log('I lost a follower!');
+    const data = request.body;
+    console.log(data);
+    const user = data.username;
+    const follower = data.follower;
+
+    user_info.update(
+        // Find the user to update to
+        { username: user },
+        // Remove the follower from their list of followers
+        { $pull: { followers: follower } },
+        {},
+        () => {}
+    );
+    response.json(data);
+});
+
+// Handles adding new users into the database
 app.post('/adduser', (request, response) => {
     console.log('I got a request!');
     console.log(request.body);
