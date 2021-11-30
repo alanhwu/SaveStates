@@ -45,7 +45,7 @@ export default function Game(){
                         {/*TODO: Figure out how to add to the backlog through this button. Probably need to be its own seperate page*/}
                         <Row><Button variant="primary">Add to backlog</Button></Row>
                         {/*TODO: Figure out how to add a new playthrough through this button. Probably need to be its own seperate page*/}
-                        <Row className='mt-1'><Button variant="primary" onClick={handleShow}>Add new playthrough</Button></Row>
+                        <Row className='mt-1'><Button variant="primary" onClick={handleShow}>Add a review</Button></Row>
                         <Modal show={show} onHide={handleClose} size={"lg"}>
                             <Modal.Body>
                                 <Container>
