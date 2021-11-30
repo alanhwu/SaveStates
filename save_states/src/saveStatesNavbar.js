@@ -2,7 +2,46 @@ import {Col, FormControl, InputGroup, Navbar} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
+
+// for showing the username if the user is logged in
+function navigationUser(userName){
+    // if the user is not logged in
+    if(userName == "") {
+        return;
+    }
+    else {
+        return <Navbar.Text>{userName}</Navbar.Text>;
+    }
+}
+
+// for showing the login button if the user is not logged in
+// and for showing the logout button if the user is logged in
+function navigationButton(userName){
+    let theButton;
+    // if the user is not logged in then show login button
+    if(userName == "") {
+        theButton = <Button href="/login" className="login">Login</Button>;
+    }
+    // TODO: configure logout here
+    else {
+        theButton = <Button href="/logout" className="logout">Log out</Button>;
+    }
+    return theButton;
+}
+
+// for showing the signup button if the user is not logged in
+function navigationSignup(userName){
+    // if the user is not logged in then show sign up button
+    if(userName == "") {
+        return <Button href="/signup" className="signup">Sign up</Button>;
+    }
+    else {
+        return;
+    }
+}
+
 function saveStatesNavbar(userName){
+    //userName ="";
     return (
         <Navbar bg="dark" variant="dark">
             <Container fluid>
@@ -22,10 +61,11 @@ function saveStatesNavbar(userName){
                     </InputGroup>
                 </Col>
                 <div>
-                    {/*Username for the user*/}
-                    <Navbar.Text>{userName}</Navbar.Text>
-                    {/*Logout button. TODO: need to implement logging out when this button is pressed */}
-                    <Button className={"ms-3"} variant="light">Logout</Button>
+                    {navigationUser(userName)}
+                    {navigationSignup(userName)}
+                    {/*TODO: INSERT PADDING HERE */}
+                    &nbsp;
+                    {navigationButton(userName)}
                 </div>
             </Container>
         </Navbar>
