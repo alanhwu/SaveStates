@@ -28,15 +28,38 @@ class Entry {
     }
 }
 
-function renderEntry(entry) {
+function RenderTable(entries) {
+    const[show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
-        <tr>
-            <td>{entry.user}</td>
-            <td>{entry.name}</td>
-            <td>{entry.date}</td>
-            {/*TODO: make the button link popout the entry*/}
-            <td>Button</td>
-        </tr>
+        <Table striped bordered hover variant="dark">
+                <tbody>
+                    {entries.map(entry => 
+                        <tr>
+                            <td>{entry.user}</td>
+                            <td>{entry.name}</td>
+                            <td>{entry.date}</td>
+                            <td>
+                                <Button variant="primary" onClick={handleShow}>
+                                    Open body
+                                </Button>
+                                <Modal show={show} onHide={handleClose}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>{entry.name}</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>{entry.body}</Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            Close
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
+                            </td>
+                         </tr>
+                        )}
+                </tbody>
+        </Table>
     )
 }
 
@@ -70,7 +93,10 @@ function Gamepage() {
     const entry1 = new Entry("Kyle", "Mario", "Entry 1", "11/16/21", "Mario is pretty cool");
     const entry2 = new Entry("jedjed", "Mario", "Starting mario!", "11/30/2021", "I love cappy!");
     const entry3 = new Entry("VaultBoy101", "Fallout 76", "Thoughts on Fallout 76", "10/22/2021", "I don't really like this game");
+
+    // TODO: find a way to populate the variable entries with entry classes
     const entries = [entry1, entry2, entry3];
+    const renderTableComponent = RenderTable(entries)
 
     return (
         <Container>
@@ -81,8 +107,6 @@ function Gamepage() {
             <div>
                 <Row>
                     <Col>
-                    {/*TODO: figure out how change the src image depending on the game*/}
-                    {/*Stupid idea: maybe we'll need to import every picture and just do an if statement?*/}
                         <Image src={state.CoverArt} thumbnail/>
                     </Col>
                     <Col>
@@ -125,12 +149,7 @@ function Gamepage() {
                         </Modal>
                         <Row>
                         <div class="Gamepage-text">User playthroughs</div>
-                        {/*TODO: Figure out how to make this dynamic: IE how to add multiple tables and rows depending on how many entries there are*/}
-                        <Table striped bordered hover variant="dark">
-                            <tbody>
-                                {entries.map(entry => renderEntry(entry))}
-                            </tbody>
-                        </Table>
+                        {renderTableComponent}
                         </Row>
                     </Col>
                 </Row>
@@ -138,10 +157,13 @@ function Gamepage() {
 
             {/*Divide for User Reviews*/}
             {/*TODO: figure out how to output different reviews based on which game we are looking at*/}
-            <div>
-                <div class="Gamepage-reviewHeader">User reviews:</div>
-                <div class="Gamepage-review">Insert fake reviews here</div>
-            </div>
+            {/*
+                 <div>
+                 <div class="Gamepage-reviewHeader">User reviews:</div>
+                 <div class="Gamepage-review">Insert fake reviews here</div>
+                </div>
+            */
+            }
         </Container>
     );
 }
