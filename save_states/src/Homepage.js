@@ -86,22 +86,4 @@ function Homepage(props) {
     );
 }
 
-// Handles the search button for users
-function searchGames() {
-    // Grab the current value of the input field 
-    const query = document.getElementById('gamesearch').value;
-    const options = {
-        // It appears that this line tells the program to either post
-        // (write) or get (read) from the database.
-        method: 'GET',
-    };
-    // Add to the database
-    fetch('http://localhost:3001/findgame/' + query, options);
-}
-
-// Handles the search button for users
-function searchUsers(username) {
-    window.location.href = "localhost3000/user?" + username;
-}
-
 export default Homepage;

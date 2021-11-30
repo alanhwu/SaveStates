@@ -1,3 +1,11 @@
-{"Username":"Michael","Password":"testing123","Game":"League of Legends","_id":"M3uOVzBbdRFnMn4v"}
-{"Username":"jedjed","Password":"password123","Game":"Dota 2","_id":"aVeBEnVCNpNoA4ka"}
-{"Username":"sadge","Password":"testpassword","Game":"Terraria","_id":"bgspNUndCKpjnKb4"}
+{"username":"Michael","password":"testing123","followers":[null],"backlog":[],"userStatus":"","_id":"6K8uwQbgEF6uKyLN"}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94"}
+{"username":"Kyle","password":"Chui","followers":[null],"backlog":[],"userStatus":"","_id":"r0EAx8vI5FWHbT6U"}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox"]}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox"]}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox"]}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Terraria"]}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Terraria"]}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Terraria","Minecraft"]}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Terraria","Minecraft"]}
+{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Minecraft"]}
