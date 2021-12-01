@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.Login-button {
+  text-align: center;
+}
+
 .Login-username {
   text-align: center;
 }
@@ -12,5 +16,5 @@
 
 .Login-Header{
   text-align: center;
-  font-size: 56pt;
+  font-size: 40pt;
 }
