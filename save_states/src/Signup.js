@@ -64,10 +64,9 @@ function Signup() {
                     console.log("Inside the else part");
                     const followers = [];
                     const backlog = [];
-                    const entries = [];
                     const library = [];
                     const userStatus = "";
-                    const data = { username, password, followers, backlog, entries, library, userStatus }; // Add more data here, configure passwordCheck here
+                    const data = { username, password, followers, backlog, library, userStatus }; // Add more data here, configure passwordCheck here
                     console.log(data);
                     localStorage.setItem("user", username);
                     const options = {
