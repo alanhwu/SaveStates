@@ -15,7 +15,7 @@ import portalImage from './images/portal.jpg';
 
 
 function Userpage() {
-    const currentUser = "Jonah";
+    const currentUser = localStorage.getItem("user");
     const jonahFollows=["Kyle", "jedjed"];
     const playthroughs = [ "bruh" ];
     const currentGame = "bruh";
@@ -120,27 +120,41 @@ function Userpage() {
         fetch(url, options);
     }
 
-    function bigFollowButton(userPage, currUser, currUserFollowers){
-        if(userPage === currUser){
+    function bigFollowButton(){
+	let included = false;
+	let currUser = localStorage.getItem("user");
+	for (let i = 0; i < state.followers.length; i++) {
+		if (state.followers[i] == currUser) {
+			included = true;
+			break;
+		}
+	}
+        if (state.username === currUser) {
             return;
         }
-        else if(currUserFollowers.includes(userPage)){
+        else if (included) {
             return(
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {unfollowUser(state.username, currentUser)}}>Unfollow</Button></div>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
+									  unfollowUser(currentUser, state.username);
+									  window.location.href="/user?" + state.username;
+								      }}>Unfollow</Button></div>
                     </Col>
                     <Col />
                 </Row>
             )
         }
-        else{
+        else {
             return(
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {followUser(state.username, currentUser)}}>Follow</Button></div>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
+									  followUser(currentUser, state.username);
+									  window.location.href="/user?" + state.username;
+								      }}>Follow</Button></div>
                     </Col>
                     <Col />
                 </Row>
@@ -223,7 +237,7 @@ function Userpage() {
                 <Col>
                     <Card>
                         <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Follows</Card.Title>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
                             <ListGroup>
                                 {state.followers.map((friend) => friendItem(friend, state.followers))} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>
