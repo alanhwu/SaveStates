@@ -49,7 +49,6 @@ function Login() {
             const options = {
                 method: 'GET'
             }
-            localStorage.setItem("user", username);
 
             // Redirect to your page after you log in
             fetch('http://localhost:3001/finduser/' + username)
@@ -57,8 +56,13 @@ function Login() {
                 .then(data => {
                     if (data.length === 0 || data[0].password != inputPassword) {
                         alert("Username or password is incorrect! Please try again.");
+                        return null;
                     }
-                    else {
+                    localStorage.setItem("user", username);
+                    return data;
+                })
+                .then(data => {
+                    if (data != null) {
                         window.location.href="/user?" + data[0].username;
                     }
                 })

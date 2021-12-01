@@ -16,11 +16,11 @@ import logo from './logo.svg';
 import portalImage from './images/portal.jpg';
 
 function RenderTable(entries) {
-    const[indexClicked, setIndexClicked] = useState(0);
-    const[show, setShow] = useState(false);
+    const [indexClicked, setIndexClicked] = useState(0);
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    if(entries.length != 0)
+    if (entries.length != 0)
     {
         return (
             <Table striped bordered hover variant="dark">
@@ -137,6 +137,12 @@ function Gamepage() {
         console.log(myurl);
         fetch(myurl)
             .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    window.location.href = '/nogame';
+                }
+                return data;
+            })
             .then(data => {
                 setState(data[0]);
             })
