@@ -11,6 +11,8 @@ import Backlog from './Backlog';
 import NewPlaythrough from './NewPlaythrough';
 import NewEntry from './NewEntry';
 import Error from './Error';
+import NoGame from './NoGameError';
+import NoUser from './NoUserError';
 
 import './App.scss';
 import './index.css';
@@ -30,6 +32,8 @@ ReactDOM.render(
       <Route path="/newplaythrough" element={<NewPlaythrough />}/>
       <Route path="/newentry" element={<NewEntry />}/>
       <Route path="/error" element={<Error />}/>
+      <Route path="/nogame" element={<NoGame />}/>
+      <Route path="/nouser" element={<NoUser />}/>
 
     </Routes>
   </Router>,

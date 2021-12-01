@@ -6,12 +6,19 @@ import Button from "react-bootstrap/Button";
 
 // for showing the username if the user is logged in
 function navigationUser(userName){
+    userName=localStorage.getItem("user")
     // if the user is not logged in
-    if(userName == "") {
+    if(userName == null) {
         return;
     }
     else {
-        return <Navbar.Text>{userName}</Navbar.Text>;
+        return <Navbar.Brand className="ms-2">
+                <Button onClick = {
+                    () => {
+                    window.location.href="/user?" + userName //userpage.js has not defined userName yet
+                    }
+                }>Go to your home page</Button>
+            </Navbar.Brand>;
     }
 }
 

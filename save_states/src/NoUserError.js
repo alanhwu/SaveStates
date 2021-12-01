@@ -1,4 +1,6 @@
 import React, {Component, useState} from 'react';
+import { Link } from "react-router-dom";
+
 import {useParams} from "react-router-dom";
 import saveStatesNavbar from "./saveStatesNavbar";
 import Row from "react-bootstrap/Row";
@@ -18,7 +20,6 @@ export default function UserError(){
         <Container>
             <Link to = "/"><h1 className="">SaveStates</h1></Link> 
             {/*Navigation bar at the top, contains link to the homepage, search bar and logout button*/}
-            {saveStatesNavbar((userName))}
             {/*Header for the name*/}
             <div class = 'Error-header'><h1>Error</h1></div>
             <div class = 'Error-message'><h1>MissingNo</h1></div>
