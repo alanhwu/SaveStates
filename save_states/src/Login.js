@@ -30,7 +30,7 @@ function Login() {
                 {SaveStatesNavbar()}
             <div>
                 <Row>
-                    <div className="Login-Header">Enter the Dungeon</div>
+                    <div className="Login-Header">Level One Start</div>
                     <Col />
                     <Col md={4}>
                         <Form.Group className="Login-username mt-3" controlId="formBasicUsername">
