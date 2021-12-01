@@ -210,13 +210,6 @@ function Userpage() {
         });
     }
 
-
-//	const response = fetch('http://localhost:3001/currgame/Gumster');
-	//	const data = response.json();
-    let playthroughHtml = [];
-    for (const game in playthroughs) {
-        playthroughHtml.push(playthroughFunc(game, playthroughs));
-    }
     return (
         <Container>
             {saveStatesNavbar(currentUser)}
@@ -265,7 +258,7 @@ function Userpage() {
                         <Card.Body>
                             <Card.Title class={"mb-3 Userpage-subheader"}>Playthroughs</Card.Title>
                             <ListGroup>
-                                {playthroughHtml} {/*TODO: Make clickable to go to a game page*/}
+                                <h1>Hello there</h1>
                             </ListGroup>
                         </Card.Body>
                     </Card>
@@ -275,16 +268,5 @@ function Userpage() {
     );
 
 }
-
-function playthroughFunc(game, gameDir){
-    const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
-    return (
-        <ListGroup.Item> <div class = {"Userpage-element mb-2"}> {game} </div>
-            <div class={"mb-2"}> {gameDir[game]} </div>
-            <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>
-    );
-}
-
-
 
 export default Userpage;
