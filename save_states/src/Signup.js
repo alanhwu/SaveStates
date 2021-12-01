@@ -80,10 +80,12 @@ function Signup() {
                         body: JSON.stringify(data)
                     };
 
-                    // TODO: figure out how to link to userpage after this with the cookies intact
-                    // Add to the database
-                    fetch('http://localhost:3001/adduser', options);
-                    // window.location.href = "/user?" + username;
+                    // Add to the database and reroute to their page
+                    fetch('http://localhost:3001/adduser', options)
+                        .then(response => response.json())
+                        .then(data => {
+                            window.location.href = "/user?" + username;
+                        })
                 }
             }}>Create Account</Button>
             {/* TODO: For now this takes you to the user page but has no effect on the log in status, 
