@@ -20,7 +20,7 @@ function Userpage() {
     const playthroughs = [ "bruh" ];
     const currentGame = "bruh";
     const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
-    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>;
+    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> <Link to={"/game?"+game}> {game} </Link></div></ListGroup.Item>;
     const [state, setState] = useState({
         username: "",
         password: "",
@@ -49,7 +49,8 @@ function Userpage() {
                 username: data.username,
                 library: data.library,
                 userStatus: data.userStatus,
-                followers: data.followers
+                followers: data.followers,
+                backlog: data.backlog
             });
             // .catch(console.log("Error user not found"));
 
@@ -81,7 +82,6 @@ function Userpage() {
 
     console.log(state);
 
-    //const backlog = state.backlog;
     const backlogList = state.backlog.map(backlogFunc);
     function friendItem(friend, currFollowers){
         if (currFollowers.includes(friend)) {
@@ -230,7 +230,7 @@ function Userpage() {
                                 Status
                             </Card.Title>
                             {state.userStatus}
-                            {setStatusUI("Jonah")}
+                            {setStatusUI(currentUser)}
                         </Card.Body>
                     </Card>
                 </Col>
