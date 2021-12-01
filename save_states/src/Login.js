@@ -33,7 +33,7 @@ class Login extends Component{
 
             <br />
 
-            <Link to = "/user"><Button className="Login-button" onClick={this.handleClick.bind()}>Log In</Button></Link>
+            <Button className="Login-button" onClick={this.handleClick.bind()}>Log In</Button>
                 {/* TODO: For now this takes you to the user page but has no effect on the log in status, 
                 make it so that it actually logs you in to your own page */}
             </div>
@@ -48,9 +48,10 @@ class Login extends Component{
         const options = {
             method: 'GET'
         }
+        localStorage.setItem("user", username);
 
         const userinfo = fetch('http://localhost:3001/finduser/' + username);
-        console.log(userinfo);
+        // window.location.href="/user?" + username;
         // TODO: How can we get this to match username/password combo from database?
 
 
