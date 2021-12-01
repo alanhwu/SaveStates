@@ -49,10 +49,9 @@ function Homepage(props) {
     }
     
     // TODO: figure out how to get the userName of the user here
-    const userName = global.user;
+    const userName = localStorage.getItem("user");
 
     var loggedin;
-    console.log(localStorage.getItem("user"));
     if (localStorage.getItem("user") == null) {
         loggedin = "Please login or sign up!";
     } else {
