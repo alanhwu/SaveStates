@@ -29,7 +29,7 @@ class Entry {
 }
 
 function RenderTable(entries) {
-    let indexClicked = 0;
+    const[indexClicked, setIndexClicked] = useState(0);
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -42,7 +42,7 @@ function RenderTable(entries) {
                             <td>{entry.name}</td>
                             <td>{entry.date}</td>
                             <td>
-                                <Button variant="primary" onClick={handleShow}>
+                                <Button variant="primary" onClick={() => {setIndexClicked(index); handleShow();}}>
                                     Open description
                                 </Button>
                             </td>
