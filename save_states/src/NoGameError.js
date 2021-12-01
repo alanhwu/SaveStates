@@ -7,22 +7,22 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Modal, ListGroup, Table, Form} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
-import portalImage from "./images/portal.jpg";
 import Button from "react-bootstrap/Button";
 
 
-export default function Error(){
+export default function GameError(){
     
     const params = useParams();
 
     return (
         <Container>
             <Link to = "/"><h1 className="">SaveStates</h1></Link> 
-            {/*Navigation bar at the top, contains link to the homepage, search bar and logout button*/}
             {/*Header for the name*/}
-            <div class = 'Error-message'><h1>I am Error</h1></div>
-            <div class = 'Description'>Something wrong happened, most likely our fault.</div>  
+            <div class = 'Error-header'><h1>Error</h1></div>
+            <div class = 'Error-message'><h1>Game Over</h1></div>
+            <div class = 'Description'>Game wasn't found. Either it's not in our 
+            database (we don't have every game) or there was a typo in your search. 
+            Don't forget, games are case-sensitive!</div>  
         </Container>
     );
 };
