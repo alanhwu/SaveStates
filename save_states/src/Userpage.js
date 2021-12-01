@@ -6,13 +6,22 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {Card, ListGroup, Form, FormControl, InputGroup, Navbar} from "react-bootstrap";
+import {Card, ListGroup, Form, FormControl, InputGroup, Navbar, Table, Modal} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 
 import './Userpage.css';
 import saveStatesNavbar from "./saveStatesNavbar";
 import portalImage from './images/portal.jpg';
 
+class Entry {
+    constructor(game, entryName, entryRating, description)
+    {
+        this.game = game;
+        this.entryName = entryName;
+        this.entryRating = entryRating
+        this.description = description
+    }
+}
 
 function Userpage() {
     const currentUser = localStorage.getItem("user");
@@ -210,6 +219,80 @@ function Userpage() {
         });
     }
 
+    const entry1 = new Entry("Zelda", "BOTW stuff", "9", "IM WAITING FOR BOTW 2");
+    const entry2 = new Entry("Mario", "Odyssey stuff", "9", "IM WAITING FOR SMO2");
+    const entry3 = new Entry("Pokemon", "I hate it here", "0", "Just replay the old games stupid");
+    
+    // const entries  [];
+    const [ reviewState, setReviewState ] = useState({
+        reviews: []
+    });
+    useEffect(() => {
+        const myurl = 'http://localhost:3001/findreviewuser/' + location.search.substring(1, location.search.length);
+        console.log(myurl);
+        fetch(myurl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setReviewState({
+                    reviews: data
+                })
+            })
+            .catch((err) => {console.log(err)})
+    }, []);
+
+    
+    function RenderTable(entries)
+    {
+        const[indexClicked, setIndexClicked] = useState(0);
+        const[show, setShow] = useState(false);
+        const handleClose = () => setShow(false);
+        const handleShow = () => setShow(true);
+        if(entries.length == 0)
+        {
+            return(
+                <Table striped bordered hover variant="dark">
+                    <tbody>
+                        <tr>
+                            <td>
+                                This user is not playing any games (for some reason)
+                            </td>
+                        </tr>
+                </tbody>
+        </Table>)
+        }
+        return(
+            <Table striped bordered hover variant="dark">
+                    <tbody>
+                        {entries.map((entry, index) => 
+                        <tr>
+                            <td>Game: {entry.game}</td>
+                            <td>Entry Name: {entry.entryName}</td>
+                            <td>Rating: {entry.entryRating}</td>
+                            <td><Button variant="primary" onClick={() => {setIndexClicked(index); handleShow();}}>
+                                        Open description
+                                </Button>
+                            </td>
+                        </tr>
+                        )}
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>{entries[indexClicked].entryName}</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>{entries[indexClicked].description}</Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
+                    </tbody>
+            </Table>
+        )
+    }
+
+    const renderTableComponent = RenderTable(reviewState.reviews);
+
     return (
         <Container>
             {saveStatesNavbar(currentUser)}
@@ -254,13 +337,13 @@ function Userpage() {
                     </Card>
                 </Col>
                 <Col>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Playthroughs</Card.Title>
-                            <ListGroup>
-                                <h1>Hello there</h1>
-                            </ListGroup>
-                        </Card.Body>
+                <Card>
+                    <Card.Body>
+                        <Card.Title class={"mb-3 Userpage-subheader"}>Playthroughs</Card.Title>
+                        <ListGroup>
+                            {renderTableComponent}
+                        </ListGroup>
+                    </Card.Body>
                     </Card>
                 </Col>
             </Row>
