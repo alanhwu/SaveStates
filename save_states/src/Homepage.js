@@ -21,7 +21,7 @@ function loginButton(userName) {
     return <Button onClick={
         () => {
             localStorage.removeItem("user");
-            console.log("clicked!");
+            window.location.href="/";
         }
     } className="logout">Logout</Button>
 
