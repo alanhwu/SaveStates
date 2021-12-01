@@ -95,15 +95,10 @@ function SaveStatesNavbar() {
                         </Button>
                     </InputGroup>
                 </Col>
-                <Col/>
-                <Col>
-                    {navigationUser(userName)}
-                </Col>
                 <Col>
                     {navigationUser(localStorage.getItem("user"))}
                     {navigationSignup(localStorage.getItem("user"))}
                 </Col>
-                <div>
 
                     {/*TODO: INSERT PADDING HERE */}
                 <Col>
