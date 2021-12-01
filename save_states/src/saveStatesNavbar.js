@@ -5,17 +5,16 @@ import Button from "react-bootstrap/Button";
 
 
 // for showing the username if the user is logged in
-function navigationUser(userName){
-    userName=localStorage.getItem("user")
+function navigationUser() {
     // if the user is not logged in
-    if(userName == null) {
+    if (localStorage.getItem("user") == null) {
         return;
     }
     else {
         return <Navbar.Brand className="ms-2">
                 <Button onClick = {
                     () => {
-                    window.location.href="/user?" + userName //userpage.js has not defined userName yet
+                    window.location.href="/user?" + localStorage.getItem("user") //userpage.js has not defined userName yet
                     }
                 }>Go to your home page</Button>
             </Navbar.Brand>;
@@ -24,7 +23,7 @@ function navigationUser(userName){
 
 // for showing the login button if the user is not logged in
 // and for showing the logout button if the user is logged in
-function navigationButton(userName){
+function navigationButton(){
     let theButton;
     // if the user is not logged in then show login button
     if (localStorage.getItem("user") == null) {
@@ -44,9 +43,9 @@ function navigationButton(userName){
 }
 
 // for showing the signup button if the user is not logged in
-function navigationSignup(userName){
+function navigationSignup(){
     // if the user is not logged in then show sign up button
-    if(userName == "") {
+    if(localStorage.getItem("user") == "") {
         return <Button href="/signup" className="signup">Sign up</Button>;
     }
     else {
@@ -54,8 +53,7 @@ function navigationSignup(userName){
     }
 }
 
-function SaveStatesNavbar(props, userName) {
-    //userName ="";
+function SaveStatesNavbar() {
     let gameQuery = useState("");
 
     const onGameChange = (event) => {
@@ -88,12 +86,12 @@ function SaveStatesNavbar(props, userName) {
                     </InputGroup>
                 </Col>
                 <div>
-                    {navigationUser(userName)}
-                    {navigationSignup(userName)}
+                    {navigationUser(localStorage.getItem("user"))}
+                    {navigationSignup(localStorage.getItem("user"))}
                     {/*TODO: INSERT PADDING HERE */}
                     {localStorage.getItem("user")}
                     &nbsp;
-                    {navigationButton(userName)}
+                    {navigationButton(localStorage.getItem("user"))}
                 </div>
             </Container>
         </Navbar>

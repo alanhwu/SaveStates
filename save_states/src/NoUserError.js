@@ -14,8 +14,6 @@ export default function UserError(){
     
     const params = useParams();
 
-    let userName = "VaultBoy101";
-
     return (
         <Container>
             <Link to = "/"><h1 className="">SaveStates</h1></Link> 
