@@ -1,6 +1,6 @@
 # SaveStates
-This project aims to be a place for the gaming community to share their reviews
-of various titles, and for each player to see what their friends are up to.
+This project aims to be a place for the gaming community to share their progress
+of various video games via entries, then compare their entries to other users.
 
 ## Dependencies
 Make sure you have [Node.js](https://nodejs.org/en/download/) installed.
