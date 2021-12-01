@@ -103,12 +103,16 @@ function Gamepage() {
         Publisher: ""
     });
 
+    const [userState, setUserState] = useState({
+        backlog: []
+    })
+
     const [ gameState, setGameState ] = useState({
         games: []
     });
 
     const gameName = state.Name;
-    const userName = "Bruh";
+    const userName = localStorage.getItem("user") || "Anonymous";
     const rating = state.AverageRating;
     const publisher = state.Publisher;
     {/* Today's date */}
@@ -127,6 +131,18 @@ function Gamepage() {
             .then(response => response.json())
             .then(data => {
                 setState(data[0]);
+            })
+    }, []);
+    {/* This code grabs the json from the database and stores it in user state. */}
+    useEffect(() => {
+        const myurl = 'http://localhost:3001/finduser/' + userName;
+        console.log(myurl);
+        fetch(myurl)
+            .then(response => response.json())
+            .then(data => {
+                setUserState({
+                    backlog: data[0].backlog
+                });
             })
     }, []);
 
@@ -159,7 +175,7 @@ function Gamepage() {
 
     
     function addToBacklog(user, game){
-        let data = {"username":user, "game":game};
+        let data = { "username": user, "game": game };
         const options = {
             // It appears that this line tells the program to either post
             // (write) or get (read) from the database.
@@ -170,6 +186,30 @@ function Gamepage() {
             body: JSON.stringify(data)
         };
         fetch("http://localhost:3001/addtobacklog", options)
+            .then(() => {
+                window.location.href="/game?" + game;
+            })
+        /*setState({
+            ...state,
+            userStatus: status
+        });*/
+    }
+
+    function removeFromBacklog(user, game){
+        let data = { "username": user, "game": game };
+        const options = {
+            // It appears that this line tells the program to either post
+            // (write) or get (read) from the database.
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        fetch("http://localhost:3001/removefrombacklog", options)
+            .then(() => {
+                window.location.href="/game?" + game;
+            })
         /*setState({
             ...state,
             userStatus: status
@@ -193,6 +233,19 @@ function Gamepage() {
             })
     }
 
+    function getBacklogButton(user, game) {
+        for (let i = 0; i < userState.backlog.length; i++) {
+            if (userState.backlog[i] == game) {
+        return(
+            <Button variant="primary" onClick={() => removeFromBacklog(user, game)}>Remove from backlog</Button>
+        )
+            }
+        }
+                return(
+                    <Button variant="primary" onClick={() => addToBacklog(user, game)}>Add to backlog</Button>
+                )
+    }
+
     return (
         <Container>
             {/*Navigation bar at the top, contains link to the homepage, search bar and logout button*/}
@@ -210,7 +263,7 @@ function Gamepage() {
                             <Col><div class="Gamepage-text">Publisher: {state.Publisher}</div></Col>
                         </Row>
                         {/*TODO: Figure out how to add to the backlog through this button. Probably need to be its own seperate page*/}
-                        <Row><Button variant="primary" onClick={() => addToBacklog(userName, state.Name)}>Add to backlog</Button></Row>
+                        <Row>{getBacklogButton(userName, state.Name)}</Row>
                         {/*TODO: Figure out how to add a new playthrough through this button. Probably need to be its own seperate page*/}
                         <Row className='mt-1'><Button variant="primary" onClick={handleShow}>Add new entry</Button></Row>
                         <Modal show={show} onHide={handleClose} size={"lg"}>
