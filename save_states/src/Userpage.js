@@ -33,6 +33,7 @@ function Userpage() {
     });
 
     const location = useLocation();
+    const currUser = "currUser";
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
         const myurl = 'http://localhost:3001/finduser/' + location.search.substring(1, location.search.length);
