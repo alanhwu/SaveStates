@@ -19,7 +19,7 @@ import portalImage from './images/portal.jpg';
 function Gamepage() {
     {/* Figure out what to get from here */}
     const gameName = "Portal";
-    const userName = "VaultBoy101";
+    const userName = "Jonah";
     const rating = 9.33;
     const publisher = "Valve";
     const [state, setState] = useState({
@@ -45,10 +45,29 @@ function Gamepage() {
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     let ratingOptions = [1,2,3,4,5,6,7,8,9,10];
     let ratingButtons = ratingOptions.map((option) =>
         <Form.Check inline label={option} name={"ratingCheckbox"} type={"radio"}/>
     )
+
+    function addToBacklog(user, game){
+        let data = {"user":user, "game":game};
+        const options = {
+            // It appears that this line tells the program to either post
+            // (write) or get (read) from the database.
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        fetch("http://localhost:3001/addtobacklog", options)
+        /*setState({
+            ...state,
+            userStatus: status
+        });*/
+    }
 
     return (
         <Container>
@@ -69,7 +88,7 @@ function Gamepage() {
                             <Col><div class="Gamepage-text">Publisher: {state.Publisher}</div></Col>
                         </Row>
                         {/*TODO: Figure out how to add to the backlog through this button. Probably need to be its own seperate page*/}
-                        <Row><Button variant="primary">Add to backlog</Button></Row>
+                        <Row><Button variant="primary" onClick={() => addToBacklog(userName, state.Name)}>Add to backlog</Button></Row>
                         {/*TODO: Figure out how to add a new playthrough through this button. Probably need to be its own seperate page*/}
                         <Row className='mt-1'><Button variant="primary" onClick={handleShow}>Add new playthrough</Button></Row>
                         <Modal show={show} onHide={handleClose} size={"lg"}>
@@ -82,11 +101,11 @@ function Gamepage() {
                                         <div key={'inline-checkbox'} className="m-3 Gamepage-text">
                                             {ratingButtons}
                                         </div>
-                                        <Form.Group className={"m-3 Gamepage-text"} controlId={"reviewForm.reviewTitle«"}>
+                                        <Form.Group className={"m-3 Gamepage-text"} controlId={"reviewForm.reviewTitle"}>
                                             <Form.Label>Title</Form.Label>
                                             <Form.Control type={"text"} />
                                         </Form.Group>
-                                        <Form.Group className={"m-3 Gamepage-text"} controlId="reviewForm.mainText">
+                                        <Form.Group className={"m-3 Gamepage-text"} controlId={"reviewForm.mainText"}>
                                             <Form.Label>Review</Form.Label>
                                             <Form.Control as={"textarea"} rows={9} placeholder={"Review of "+gameName}/>
                                         </Form.Group>
