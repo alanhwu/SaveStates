@@ -25,11 +25,19 @@ function RenderTable(entries) {
         return (
             <Table striped bordered hover variant="dark">
                     <tbody>
+                        <tr>
+                            <th>User</th>
+                            <th>Entry Name</th>
+                            <th>Date</th>
+                            <th>Review</th>
+                            <th>Description</th>
+                        </tr>
                         {entries.map((entry, index) => 
                             <tr>
                                 <td>{entry.user}</td>
                                 <td>{entry.entryName}</td>
                                 <td>{entry.date}</td>
+                                <td>{entry.entryRating}</td>
                                 <td>
                                     <Button variant="primary" onClick={() => {setIndexClicked(index); handleShow();}}>
                                         Open description
