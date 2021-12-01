@@ -15,12 +15,12 @@ import portalImage from './images/portal.jpg';
 
 
 function Userpage() {
-    const currentUser = "Jonah";
+    const currentUser = localStorage.getItem("user");
     const jonahFollows=["Kyle", "jedjed"];
     const playthroughs = [ "bruh" ];
     const currentGame = "bruh";
     const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
-    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> {game} </div> <Image src={gameImages[game]} thumbnail fluid /> </ListGroup.Item>;
+    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> <Link to={"/game?"+game}> {game} </Link></div></ListGroup.Item>;
     const [state, setState] = useState({
         username: "",
         password: "",
@@ -33,6 +33,7 @@ function Userpage() {
     });
 
     const location = useLocation();
+    const currUser = "currUser";
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
         const myurl = 'http://localhost:3001/finduser/' + location.search.substring(1, location.search.length);
@@ -48,7 +49,8 @@ function Userpage() {
                 username: data.username,
                 library: data.library,
                 userStatus: data.userStatus,
-                followers: data.followers
+                followers: data.followers,
+                backlog: data.backlog
             });
             // .catch(console.log("Error user not found"));
 
@@ -80,7 +82,6 @@ function Userpage() {
 
     console.log(state);
 
-    //const backlog = state.backlog;
     const backlogList = state.backlog.map(backlogFunc);
     function friendItem(friend, currFollowers){
         if (currFollowers.includes(friend)) {
@@ -119,27 +120,41 @@ function Userpage() {
         fetch(url, options);
     }
 
-    function bigFollowButton(userPage, currUser, currUserFollowers){
-        if(userPage === currUser){
+    function bigFollowButton(){
+	let included = false;
+	let currUser = localStorage.getItem("user");
+	for (let i = 0; i < state.followers.length; i++) {
+		if (state.followers[i] == currUser) {
+			included = true;
+			break;
+		}
+	}
+        if (state.username === currUser) {
             return;
         }
-        else if(currUserFollowers.includes(userPage)){
+        else if (included) {
             return(
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {unfollowUser(state.username, currentUser)}}>Unfollow</Button></div>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
+									  unfollowUser(currentUser, state.username);
+									  window.location.href="/user?" + state.username;
+								      }}>Unfollow</Button></div>
                     </Col>
                     <Col />
                 </Row>
             )
         }
-        else{
+        else {
             return(
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {followUser(state.username, currentUser)}}>Follow</Button></div>
+                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
+									  followUser(currentUser, state.username);
+									  window.location.href="/user?" + state.username;
+								      }}>Follow</Button></div>
                     </Col>
                     <Col />
                 </Row>
@@ -215,14 +230,14 @@ function Userpage() {
                                 Status
                             </Card.Title>
                             {state.userStatus}
-                            {setStatusUI("Jonah")}
+                            {setStatusUI(currentUser)}
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card>
                         <Card.Body>
-                            <Card.Title class={"mb-3 Userpage-subheader"}>Follows</Card.Title>
+                            <Card.Title class={"mb-3 Userpage-subheader"}>Followers</Card.Title>
                             <ListGroup>
                                 {state.followers.map((friend) => friendItem(friend, state.followers))} {/*TODO: Make clickable to go to a game page*/}
                             </ListGroup>

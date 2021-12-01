@@ -84,6 +84,7 @@ function SaveStatesNavbar(props, userName) {
                     {navigationUser(userName)}
                     {navigationSignup(userName)}
                     {/*TODO: INSERT PADDING HERE */}
+                    {localStorage.getItem("user")}
                     &nbsp;
                     {navigationButton(userName)}
                 </div>
