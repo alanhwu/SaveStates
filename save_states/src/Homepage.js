@@ -9,6 +9,32 @@ import { FormControl, InputGroup } from "react-bootstrap";
 import './Homepage.css';
 import logo from './logo.svg';
 
+// show the login button if the user is not logged in
+// show the signout button if the user is logged in
+function loginButton(userName) {
+    // if the user is not logged in, show log in button
+    if (localStorage.getItem("user") == null) {
+        return <Button href="login" className="login">Login</Button>;
+    }
+    // if the user is logged in, show logout button
+    // TODO: figure out logging out
+    return <Button onClick={
+        () => {
+            localStorage.removeItem("user");
+            console.log("clicked!");
+        }
+    } className="logout">Logout</Button>
+
+}
+
+function signupButton(userName) {
+    // if the user is not logged in, DO show signup button
+    if (userName == "") {
+        return <Button href="signup" className="signup">Signup</Button>
+    }
+    // if the user is logged in, do not show anything
+    return;
+}
 function Homepage(props) {
 
     let gameQuery = useState("");
@@ -21,19 +47,30 @@ function Homepage(props) {
     const onUserChange = (event) => {
         userQuery = event.target.value;
     }
+    
+    // TODO: figure out how to get the userName of the user here
+    const userName = global.user;
 
+    var loggedin;
+    console.log(localStorage.getItem("user"));
+    if (localStorage.getItem("user") == null) {
+        loggedin = "Please login or sign up!";
+    } else {
+        loggedin = "Hello " + localStorage.getItem("user") + "!";
+    }
+    
     return (
         <Container fluid class="mx-auto">
             <div className="Homepage">
                 <h1>SaveStates</h1>
+		<h2>{loggedin}</h2>
                 <Row>
                     <Col/>
                     <Col md={"auto"}>
-                        <Link to="/login"><Button className="Login">Login</Button></Link>
+                        {loginButton(userName)}
                     </Col>
-                    {/*TODO: figure out how to sign out with the button*/}
                     <Col md={"auto"}>
-                        <Button className="Sign Up">Sign Up</Button>
+                        {signupButton(userName)}
                     </Col>
                     <Col/>
                 </Row>

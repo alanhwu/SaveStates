@@ -62,8 +62,14 @@ function Signup() {
                 }
                 else {
                     console.log("Inside the else part");
-                    const data = { username, password }; // Add more data here, configure passwordCheck here
+                    const followers = [];
+                    const backlog = [];
+                    const entries = [];
+                    const library = [];
+                    const userStatus = "";
+                    const data = { username, password, followers, backlog, entries, library, userStatus }; // Add more data here, configure passwordCheck here
                     console.log(data);
+                    localStorage.setItem("user", username);
                     const options = {
                         // It appears that this line tells the program to either post
                         // (write) or get (read) from the database.
@@ -86,29 +92,5 @@ function Signup() {
     );
 
 }
-
-/* function handleClick(username, password, passwordCheck) {
-    if (password !== passwordCheck) {
-        alert("The two passwords are not the same. Try again");
-        return;
-    }
-    else {
-        const data = { username, password }; // Add more data here, configure password
-        console.log(data);
-        const options = {
-            // It appears that this line tells the program to either post
-            // (write) or get (read) from the database.
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-        // TODO: figure out how to link to userpage after this with the cookies intact
-        // Add to the database
-        fetch('http://localhost:3001/adduser', options);
-        window.location.href = "/user?" + username;
-    }
-} */
 
 export default Signup;

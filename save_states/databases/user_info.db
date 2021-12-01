@@ -1,3 +1,6 @@
-{"username":"Michael","password":"testing123","followers":[null],"backlog":[],"userStatus":"","_id":"6K8uwQbgEF6uKyLN"}
-{"username":"Jonah","password":"paten","followers":["Kyle"],"backlog":["Terraria","Minecraft"],"userStatus":"Hello World!","_id":"ba5WrtsBWuEhYh94","library":["Roblox","Minecraft"]}
-{"username":"Kyle","password":"Chui","followers":[null],"backlog":[],"userStatus":"","_id":"r0EAx8vI5FWHbT6U"}
+{"username":"Hello","password":"world","followers":[],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"8TrhsLJnQDd02P1m"}
+{"username":"Jonah","password":"anotherbadpassword","followers":["jedjed","Michael"],"backlog":[],"entries":[],"library":["Mario"],"userStatus":"Hello world","_id":"EJLm2WaDMaQj4ggZ"}
+{"username":"jedjed","password":"worst","followers":["kc1719"],"backlog":[],"entries":[],"library":["Grand"],"userStatus":"I love minecraft","_id":"LtsvG4ItgVv9ePZz"}
+{"username":"Gumster","password":"Ruka","followers":[],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"YQu1YzMHDUSiRzo0"}
+{"username":"Michael","password":"bruh","followers":["Jonah"],"backlog":[],"entries":[],"library":["Mario","Terraria"],"userStatus":"I hate terraria","_id":"eliFtDICGVtRWnoW"}
+{"username":"kc1719","password":"badpassword","followers":["Jonah"],"backlog":[],"entries":[],"library":["Terraria"],"userStatus":"This is a status!","_id":"t2nyTy9cWJyNjPlt"}
