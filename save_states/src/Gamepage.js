@@ -94,8 +94,8 @@ function Gamepage() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    let ratingOptions = [1,2,3,4,5,6,7,8,9,10];
-    let ratingButtons = ratingOptions.map((option) =>
+    const ratingOptions = [1,2,3,4,5,6,7,8,9,10];
+    const ratingButtons = ratingOptions.map((option) =>
         <Form.Check inline label={option} name={"ratingCheckbox"} type={"radio"}/>
     )
 
@@ -109,7 +109,7 @@ function Gamepage() {
     const renderTableComponent = RenderTable(entries)
     
     function addToBacklog(user, game){
-        let data = {"user":user, "game":game};
+        let data = {"username":user, "game":game};
         const options = {
             // It appears that this line tells the program to either post
             // (write) or get (read) from the database.
