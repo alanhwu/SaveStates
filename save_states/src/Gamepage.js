@@ -143,15 +143,17 @@ function Gamepage() {
     }, []);
     {/* This code grabs the json from the database and stores it in user state. */}
     useEffect(() => {
-        const myurl = 'http://localhost:3001/finduser/' + userName;
-        console.log(myurl);
-        fetch(myurl)
-            .then(response => response.json())
-            .then(data => {
+        if (localStorage.getItem("user") != null) {
+            const myurl = 'http://localhost:3001/finduser/' + userName;
+            console.log(myurl);
+            fetch(myurl)
+              .then(response => response.json())
+              .then(data => {
                 setUserState({
-                    backlog: data[0].backlog
+                  backlog: data[0].backlog
                 });
-            })
+              })
+        }
     }, []);
 
     {/* This code grabs the review JSONs and stores them in the gameState. */}
@@ -242,16 +244,17 @@ function Gamepage() {
     }
 
     function getBacklogButton(user, game) {
+        if (localStorage.getItem("user") == null) return;
         for (let i = 0; i < userState.backlog.length; i++) {
             if (userState.backlog[i] == game) {
-        return(
-            <Button variant="primary" onClick={() => removeFromBacklog(user, game)}>Remove from backlog</Button>
-        )
+                return(
+                    <Button variant="primary" onClick={() => removeFromBacklog(user, game)}>Remove from backlog</Button>
+                )
             }
         }
-                return(
-                    <Button variant="primary" onClick={() => addToBacklog(user, game)}>Add to backlog</Button>
-                )
+        return(
+            <Button variant="primary" onClick={() => addToBacklog(user, game)}>Add to backlog</Button>
+        )
     }
 
     return (
