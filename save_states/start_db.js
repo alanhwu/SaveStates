@@ -63,9 +63,23 @@ app.post('/addreview', (request, response) => {
 });
 
 // Handle query for reviews (by game)
-app.get('/findreviews/:query', (request, response) => {
+app.get('/findreviewgame/:query', (request, response) => {
     console.log("Looking for '" + request.params.query + "'!");
     reviews.find({ game: new RegExp(request.params.query) }, (err, data) => {
+        if (err) {
+            response.status(500).send(err.toString());
+            return;
+        }
+        response.json(data);
+        console.log(data);
+
+    });
+});
+
+// Handle query for reviews (by user)
+app.get('/findreviewuser/:query', (request, response) => {
+    console.log("Looking for '" + request.params.query + "'!");
+    reviews.find({ username: new RegExp(request.params.query) }, (err, data) => {
         if (err) {
             response.status(500).send(err.toString());
             return;
