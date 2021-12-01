@@ -9,5 +9,9 @@
 {"username":"kc1719","password":"badpassword","followers":["Jonah"],"backlog":[],"entries":[],"library":["Terraria"],"userStatus":"This is a status!","_id":"t2nyTy9cWJyNjPlt"}
 {"username":"madgeface","password":"asdf","followers":[],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"u7oswrE4XHIaUKBc"}
 {"username":"Cringe","password":"bruhmoment","followers":[],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"zPFavmAdXG7arlHQ"}
-{"username":"Gumster","password":"Ruka","followers":[],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"YQu1YzMHDUSiRzo0"}
-{"username":"Gumster","password":"Ruka","followers":[],"backlog":["Legend of Zelda: A Link to the Past"],"entries":[],"library":[],"userStatus":"","_id":"YQu1YzMHDUSiRzo0"}
+{"username":"KylePhilips2","password":"WR19999","followers":[],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"to1g4XeVYSEwD8Bs"}
+{"username":"dababy","password":"asdf","followers":["KylePhilips2"],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"BL2LKv7TEBYp3c04"}
+{"username":"dababy","password":"asdf","followers":[],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"BL2LKv7TEBYp3c04"}
+{"username":"dababy","password":"asdf","followers":["KylePhilips2"],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"BL2LKv7TEBYp3c04"}
+{"username":"KylePhilips2","password":"WR19999","followers":[],"backlog":["Grand Theft Auto: San Andreas"],"entries":[],"library":[],"userStatus":"","_id":"to1g4XeVYSEwD8Bs"}
+{"username":"Gumster","password":"Ruka","followers":["KylePhilips2"],"backlog":["Legend of Zelda: A Link to the Past"],"entries":[],"library":[],"userStatus":"","_id":"YQu1YzMHDUSiRzo0"}
