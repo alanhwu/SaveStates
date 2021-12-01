@@ -15,51 +15,52 @@ import './Gamepage.css';
 import logo from './logo.svg';
 import portalImage from './images/portal.jpg';
 
-// Entry class
-// Will end up needing an array of Entries
-class Entry {
-    constructor(user, game, name, date, body)
-    {
-        this.user = user;
-        this.game = game;
-        this.name = name;
-        this.date = date;
-        this.body = body;
-    }
-}
-
 function RenderTable(entries) {
     const[indexClicked, setIndexClicked] = useState(0);
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    return (
-        <Table striped bordered hover variant="dark">
-                <tbody>
-                    {entries.map((entry, index) => 
-                        <tr>
-                            <td>{entry.user}</td>
-                            <td>{entry.name}</td>
-                            <td>{entry.date}</td>
-                            <td>
-                                <Button variant="primary" onClick={() => {setIndexClicked(index); handleShow();}}>
-                                    Open description
+    if(entries.length != 0)
+    {
+        return (
+            <Table striped bordered hover variant="dark">
+                    <tbody>
+                        {entries.map((entry, index) => 
+                            <tr>
+                                <td>{entry.user}</td>
+                                <td>{entry.entryName}</td>
+                                <td>{entry.date}</td>
+                                <td>
+                                    <Button variant="primary" onClick={() => {setIndexClicked(index); handleShow();}}>
+                                        Open description
+                                    </Button>
+                                </td>
+                             </tr>
+                            )}
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>{entries[indexClicked].entryName}</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>{entries[indexClicked].description}</Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
                                 </Button>
-                            </td>
-                         </tr>
-                        )}
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>{entries[indexClicked].name}</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>{entries[indexClicked].body}</Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Close
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </tbody>
+                            </Modal.Footer>
+                        </Modal>
+                    </tbody>
+            </Table>
+        )
+    }
+    return(
+        <Table striped bordered hover variant="dark">
+        <tbody>
+            <tr>
+                <td>
+                    No one is playing this game, be the first to play it!
+                </td>
+            </tr>
+        </tbody>
         </Table>
     )
 }
@@ -101,6 +102,11 @@ function Gamepage() {
         ReleaseDate: "",
         Publisher: ""
     });
+
+    const [gameState, setGameState] = useState({
+        games: []
+    });
+
     const gameName = state.Name;
     const userName = "Bruh";
     const rating = state.AverageRating;
@@ -124,6 +130,22 @@ function Gamepage() {
             })
     }, []);
 
+    {/* This code grabs the review JSONs and stores them in the gameState. */}
+    useEffect(() => {
+        const myurl = 'http://localhost:3001/findreviewgame/' + location.search.substring(1, location.search.length);
+        console.log(myurl);
+        fetch(myurl)
+            .then(response => response.json())
+            .then(data => {
+                for (let i = 0; i < data.length; i++) {
+                    if (data.length < gameState.games.length) break;
+                    gameState.games.push(data[i]);
+                }
+            })
+    }, []);
+
+    console.log(gameState.games);
+
     const[show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -134,14 +156,7 @@ function Gamepage() {
 
     )
 
-
-    const entry1 = new Entry("Kyle", "Mario", "Entry 1", "11/16/21", "Mario is pretty cool");
-    const entry2 = new Entry("jedjed", "Mario", "Starting mario!", "11/30/2021", "I love cappy!");
-    const entry3 = new Entry("VaultBoy101", "Fallout 76", "Thoughts on Fallout 76", "10/22/2021", "I don't really like this game");
-
-    // TODO: find a way to populate the variable entries with entry classes
-    const entries = [entry1, entry2, entry3];
-    const renderTableComponent = RenderTable(entries)
+    const renderTableComponent = RenderTable(gameState.games);
     
     function addToBacklog(user, game){
         let data = {"username":user, "game":game};
@@ -171,8 +186,8 @@ function Gamepage() {
             },
             body: JSON.stringify(entryData)
         };
-        fetch("http://localhost:3001/addreview", options)
         handleClose()
+        fetch("http://localhost:3001/addreview", options);
     }
 
     return (
@@ -253,6 +268,7 @@ function Gamepage() {
                         </Modal>
 
                         <Row>
+
                         <div class="Gamepage-text">User playthroughs</div>
                         {renderTableComponent}
                         </Row>
