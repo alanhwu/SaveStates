@@ -1,6 +1,7 @@
 # SaveStates
-This project aims to be a place for the gaming community to share their progress
-of various video games via entries, then compare their entries to other users.
+This project aims to be a place for the gaming community to share their reviews
+of various video games via playthrough entries, and compare their thoughts to
+other users.
 
 ## Dependencies
 Make sure you have [Node.js](https://nodejs.org/en/download/) installed.
@@ -28,11 +29,12 @@ save_states/
       └─── Homepage.js
       └─── Gamepage.js
       └─── ...
-└─── public/
-      └─── logo.png
-      └─── ...
 └─── databases/
       └─── user_info.db
+      └─── games.db
+      └─── ...
+└─── public/
+      └─── logo.png
       └─── ...
 ```
 
@@ -42,10 +44,16 @@ The `package.json` file contains a bunch of macros and instructions for how
 main thing to take note of is the section under `scripts`, which defines
 commands such as `npm start` (which you use to start the project).
 
+### `start_db.js`
+This file contains the script necessary to locally host our databases (in
+`databases/`) at `localhost:3001`, as well as allow for interaction with the
+databases. There are functions to query the databases, as well as
+add/change/remove items from them.
+
 ### `src/`
 This folder contains the source files for the various webpages, which are
-written mostly in JSX. Chief among these is `src/index.js`, which defines a lot
-of the interactions between the actual webpages.
+written mostly in JSX. Chief among these is `src/index.js`, which uses routes to
+define how all of the webpages link to each other.
 
 #### `src/index.js`
 This file utilizes `Routes` from the `react-router-dom` dependency to redirect
@@ -55,30 +63,30 @@ pages are given paths like `/gamepage`. In fact, this is exactly what is
 accomplished in `src/index.js`, as seen below:
 ```xml
 <Route path="/" element={<Homepage />}/>
-<Route path="/gamepage" element={<Gamepage />}/>
+<Route path="/game" element={<Gamepage />}/>
+<Route path="/login" element={<Login />}/>
 ```
 For example, the second line in the code snippet above defines the file path
-`/gamepage` to use the file `src/Gamepage.js` for its contents. You can verify
-this yourself by visiting `localhost:3000/gamepage`.
+`/game` to use the file `src/Gamepage.js` for its contents. You can verify
+this yourself by visiting `localhost:3000/game?Mario` (where `Mario` is a search
+query).
 
 #### `src/[Other files].js`
 These files house the actual webpages themselves, and simply contain a function
 that returns the contents of the webpage. Of note is the `Link` XML tag, which
 allows for redirects between pages using the aforementioned `/` file tree schema
-for organizing the webpages.
+for organizing the webpages. Most of these pages utlilize the APIs in
+`start_db.js` in order to dynamically populate the page contents.
 
 ### `databases/`
-Contains the databases---will contain separate files to store information about
-the user and about various games.
-
-### `start_db.js`
-This file contains the script necessary to locally host our databases at
-`localhost:3001`. It currently supports adding username--password combinations
-to `user_info.db`, as well as querying `games.db` for game titles.
-* TODO: Make game search functionality better
-* TODO: Once login/sign up screens are distinct, write one function to query
-  `user_info.db` and one to append to it.
+Contains the backend databases that contain all of the data. In this project we
+have three databases:
+* `user_info.db`---Stores information about the user, such as `username`,
+  `followers`, etc.
+* `games.db`---Stores information about the games, such as `Name`,
+  `CoverArt`, etc.
+* `reviews.db`---Stores information about the games, such as `entryName`,
+  `entryRating`, etc.
 
 ### `public/`
-As far as I can tell, this folder just contains resources that may be used by
-webpages in the `src/` folder.
+Contains some auto-generated files that ensure the project runs.
