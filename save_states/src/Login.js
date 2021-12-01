@@ -70,7 +70,4 @@ function Login() {
     
 }
 
-function handleClick(username, password) {
-}
-
 export default Login;
