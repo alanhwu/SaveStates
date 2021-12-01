@@ -103,7 +103,7 @@ function Gamepage() {
         Publisher: ""
     });
 
-    const [gameState, setGameState] = useState({
+    const [ gameState, setGameState ] = useState({
         games: []
     });
 
@@ -131,22 +131,23 @@ function Gamepage() {
     }, []);
 
     {/* This code grabs the review JSONs and stores them in the gameState. */}
+    
     useEffect(() => {
         const myurl = 'http://localhost:3001/findreviewgame/' + location.search.substring(1, location.search.length);
-        console.log(myurl);
         fetch(myurl)
             .then(response => response.json())
             .then(data => {
-                for (let i = 0; i < data.length; i++) {
-                    if (data.length < gameState.games.length) break;
-                    gameState.games.push(data[i]);
-                }
+                console.log(data);
+                setGameState({
+                    games: data
+                })
             })
+            .catch((err) => {console.log(err)})
     }, []);
 
-    console.log(gameState.games);
+    const renderTableComponent = RenderTable(gameState.games);
 
-    const[show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -156,7 +157,6 @@ function Gamepage() {
 
     )
 
-    const renderTableComponent = RenderTable(gameState.games);
     
     function addToBacklog(user, game){
         let data = {"username":user, "game":game};
@@ -187,7 +187,10 @@ function Gamepage() {
             body: JSON.stringify(entryData)
         };
         handleClose()
-        fetch("http://localhost:3001/addreview", options);
+        fetch("http://localhost:3001/addreview", options)
+            .then(() => {
+                window.location.href="/game?" + game;
+            })
     }
 
     return (
