@@ -168,6 +168,12 @@ function Userpage() {
     const onStatusChange = (event) => {
         statusQuery = event.target.value;
     }
+    const onStatusKeyPress = (event) =>{
+        //alert(event.keyCode);
+        if(event.key === "Enter"){
+            setStatus(statusQuery);
+        }
+    }
     function setStatusUI(loggedInuser){
         if(loggedInuser === state.username){
             return(
@@ -178,6 +184,7 @@ function Userpage() {
                         aria-label="Update your status"
                         aria-describedby="basic-addon2"
                         onChange={onStatusChange}
+                        onKeyPress={onStatusKeyPress}
                     />
                     {/*TODO: figure out how to send get requests through this button*/}
                     <Button

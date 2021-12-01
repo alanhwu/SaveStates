@@ -56,9 +56,18 @@ function navigationSignup(){
 function SaveStatesNavbar() {
     let gameQuery = useState("");
 
+    const goToGame = () => {window.location.href="/game?" + gameQuery}
+
     const onGameChange = (event) => {
         gameQuery = event.target.value;
         console.log(gameQuery);
+    }
+
+    const onGameKeyPress = (event) => {
+        console.log(event.key)
+        if(event.key === "Enter"){
+            goToGame()
+        }
     }
 
     return (
@@ -75,24 +84,33 @@ function SaveStatesNavbar() {
                             classname="me-2"
                             aria-label="Search"
                             onChange={onGameChange}
+                            onKeyPress={onGameKeyPress}
                         />
                         {/*TODO: figure out how to make searching work through the button*/}
                         <Button
                             variant="outline-success"
-                            onClick={() => {window.location.href="/game?" + gameQuery}}
+                            onClick={goToGame}
                         >
                             Search
                         </Button>
                     </InputGroup>
                 </Col>
-                <div>
+                <Col/>
+                <Col>
+                    {navigationUser(userName)}
+                </Col>
+                <Col>
                     {navigationUser(localStorage.getItem("user"))}
                     {navigationSignup(localStorage.getItem("user"))}
+                </Col>
+                <div>
+
                     {/*TODO: INSERT PADDING HERE */}
+                <Col>
                     {localStorage.getItem("user")}
                     &nbsp;
                     {navigationButton(localStorage.getItem("user"))}
-                </div>
+                </Col>         
             </Container>
         </Navbar>
     )

@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './Signup.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
+import {Button, Col, Form, Row} from "react-bootstrap";
 import saveStatesNavbar from "./saveStatesNavbar";
 
 function Signup() {
@@ -33,24 +33,50 @@ function Signup() {
 
     return (
         <div className="signup-page">
-            {/* Import Jonah's navbar & make navbar so it accounts for guests*/}
-            <Link to = "/"><h1 className="">SaveStates</h1></Link> 
-            <header className="Signup-flavortext">
+            {saveStatesNavbar()}
+            <header className="Signup-flavortext mt-3">
                 <label>Create a New Character</label>
             </header>
-<br />
-            <label className="Description">Create a username and secure password</label>
+            <br />
+            <label className="Description mb-4">Create a username and secure password</label>
             {/* Use placeholder here to show "ghost text". */}
             <div>
-                <input id="username" onChange={onUsernameChange} placeholder="Username" />
+                <Row>
+                    <Col />
+                    <Col md={4}>
+                        <Form.Group className="Login-username mt-3" controlId="formBasicUsername">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="username" placeholder="Enter username" onChange={onUsernameChange} />
+                        </Form.Group>
+                    </Col>
+                    <Col />
+                </Row>
             </div>
             <br />
             <div>
-                <input id="password" onChange={onPasswordChange} type="password" placeholder="Password" />
+                <Row>
+                    <Col />
+                    <Col md={4}>
+                        <Form.Group className="Login-password" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Enter password" onChange={onPasswordChange} />
+                        </Form.Group>
+                    </Col>
+                    <Col />
+                </Row>
             </div>
             <br />
             <div>
-                <input id="passwordCheck" onChange={onPasswordCheckChange} type="password" placeholder="Password (Again)" />
+                <Row>
+                    <Col />
+                    <Col md={4}>
+                        <Form.Group className="Login-password" controlId="formBasicPassword">
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control type="password" placeholder="Confirm Password" onChange={onPasswordCheckChange} />
+                        </Form.Group>
+                    </Col>
+                    <Col />
+                </Row>
             </div>
             <br />
             {/* Needs bind in order to run only on click and not on page load!  */}

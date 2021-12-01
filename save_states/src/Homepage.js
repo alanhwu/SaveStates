@@ -10,7 +10,7 @@ import './Homepage.css';
 import logo from './logo.svg';
 
 // show the login button if the user is not logged in
-// show the signout button if the user is logged in
+// show the sign out button if the user is logged in
 function loginButton(userName) {
     // if the user is not logged in, show log in button
     if (localStorage.getItem("user") == null) {
@@ -43,9 +43,24 @@ function Homepage(props) {
     const onGameChange = (event) => {
         gameQuery = event.target.value;
     }
+    const goToGame = () => {window.location.href="/game?" + gameQuery}
+
+    const onGameKeypress = (event) => {
+        if(event.key === "Enter"){
+            goToGame()
+        }
+    }
+
+    const goToUser = () => {window.location.href="/user?" + userQuery}
 
     const onUserChange = (event) => {
         userQuery = event.target.value;
+    }
+
+    const onUserKeypress = (event) => {
+        if(event.key === "Enter"){
+            goToUser()
+        }
     }
     
     // TODO: figure out how to get the userName of the user here
@@ -82,13 +97,14 @@ function Homepage(props) {
                                 aria-label="Search for Games"
                                 aria-describedby="basic-addon2"
                                 onChange={onGameChange}
+                                onKeyPress={onGameKeypress}
                             />
                             {/*TODO: figure out how to send get requests through this button*/}
                             <Button
                                 variant="outline-success"
                                 id="button-addon2"
                                 class="btn btn-primary"
-                                onClick={() => {window.location.href="/game?" + gameQuery}}
+                                onClick={goToGame}
                             >
                                 Search
                             </Button>
@@ -101,13 +117,14 @@ function Homepage(props) {
                                 aria-label="Search for Users"
                                 aria-describedby="basic-addon2"
                                 onChange={onUserChange}
+                                onKeyPress={onUserKeypress}
                             />
                             {/*TODO: figure out how to send get requests through this button*/}
                                 <Button
                                     variant="outline-success"
                                     id="button-addon2"
                                     class="btn btn-primary"
-                                    onClick={() => {window.location.href="/user?" + userQuery}}
+                                    onClick={goToUser}
                                 >
                                     Search
                                 </Button>
