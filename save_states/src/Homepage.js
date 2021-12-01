@@ -29,7 +29,7 @@ function loginButton(userName) {
 
 function signupButton(userName) {
     // if the user is not logged in, DO show signup button
-    if (userName == "") {
+    if (userName == null) {
         return <Button href="signup" className="signup">Signup</Button>
     }
     // if the user is logged in, do not show anything
@@ -67,10 +67,10 @@ function Homepage(props) {
                 <Row>
                     <Col/>
                     <Col md={"auto"}>
-                        {loginButton(userName)}
+                        {loginButton(localStorage.getItem("user"))}
                     </Col>
                     <Col md={"auto"}>
-                        {signupButton(userName)}
+                        {signupButton(localStorage.getItem("user"))}
                     </Col>
                     <Col/>
                 </Row>
