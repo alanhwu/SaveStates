@@ -51,7 +51,7 @@ class Login extends Component{
         localStorage.setItem("user", username);
 
         const userinfo = fetch('http://localhost:3001/finduser/' + username);
-        // window.location.href="/user?" + username;
+         window.location.href="/user?" + username;
         // TODO: How can we get this to match username/password combo from database?
 
 
