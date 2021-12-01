@@ -79,7 +79,7 @@ app.get('/findreviewgame/:query', (request, response) => {
 // Handle query for reviews (by user)
 app.get('/findreviewuser/:query', (request, response) => {
     console.log("Looking for '" + request.params.query + "'!");
-    reviews.find({ username: new RegExp(request.params.query) }, (err, data) => {
+    reviews.find({ user : new RegExp(request.params.query) }, (err, data) => {
         if (err) {
             response.status(500).send(err.toString());
             return;

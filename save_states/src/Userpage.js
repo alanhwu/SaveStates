@@ -42,26 +42,18 @@ function Userpage() {
     });
 
     const location = useLocation();
-    const currUser = "currUser";
     {/* This code grabs the json from the database and stores it in state. */}
     useEffect(() => {
         const myurl = 'http://localhost:3001/finduser/' + location.search.substring(1, location.search.length);
         const getData = async () => {
             const data = await fetch(myurl)
                 .then(response => response.json())
-                .then(data => {
-                    return data[0];
+                .then(JSON => {
+                    if (JSON.length === 0) {
+                        window.location.href = '/nouser';
+                    }
+                    setState(JSON[0]);
                 })
-            console.log(data);
-            setState({
-                ...state,
-                username: data.username,
-                library: data.library,
-                userStatus: data.userStatus,
-                followers: data.followers,
-                backlog: data.backlog
-            });
-            // .catch(console.log("Error user not found"));
 
             for (let i = 0; i < state.library.length; i++) {
                 let gameurl = 'http://localhost:3001/findgame/' + state.library[i];
@@ -227,6 +219,7 @@ function Userpage() {
     const [ reviewState, setReviewState ] = useState({
         reviews: []
     });
+
     useEffect(() => {
         const myurl = 'http://localhost:3001/findreviewuser/' + location.search.substring(1, location.search.length);
         console.log(myurl);
