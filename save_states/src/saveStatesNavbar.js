@@ -20,12 +20,18 @@ function navigationUser(userName){
 function navigationButton(userName){
     let theButton;
     // if the user is not logged in then show login button
-    if(userName == "") {
+    if (localStorage.getItem("user") == null) {
         theButton = <Button href="/login" className="login">Login</Button>;
+        // theButton = <Button href="/login" className="login">Login</Button>;
     }
     // TODO: configure logout here
     else {
-        theButton = <Button href="/logout" className="logout">Log out</Button>;
+        theButton = <Button onClick={
+            () => {
+                localStorage.removeItem("user");
+                window.location.href="/";
+            }
+        } className="logout">Log out</Button>;
     }
     return theButton;
 }

@@ -69,7 +69,7 @@ function Signup() {
                     const userStatus = "";
                     const data = { username, password, followers, backlog, entries, library, userStatus }; // Add more data here, configure passwordCheck here
                     console.log(data);
-                    global.user = username;
+                    localStorage.setItem("user", username);
                     const options = {
                         // It appears that this line tells the program to either post
                         // (write) or get (read) from the database.

@@ -13,18 +13,23 @@ import logo from './logo.svg';
 // show the signout button if the user is logged in
 function loginButton(userName) {
     // if the user is not logged in, show log in button
-    if(userName == ""){
+    if (localStorage.getItem("user") == null) {
         return <Button href="login" className="login">Login</Button>;
     }
     // if the user is logged in, show logout button
     // TODO: figure out logging out
-    return <Button href="logout" className="logout">Logout</Button>
+    return <Button onClick={
+        () => {
+            localStorage.removeItem("user");
+            console.log("clicked!");
+        }
+    } className="logout">Logout</Button>
 
 }
 
 function signupButton(userName) {
     // if the user is not logged in, DO show signup button
-    if(userName == ""){
+    if (userName == "") {
         return <Button href="signup" className="signup">Signup</Button>
     }
     // if the user is logged in, do not show anything
@@ -47,10 +52,11 @@ function Homepage(props) {
     const userName = global.user;
 
     var loggedin;
-    if(global.user == null){
-	loggedin = "Please login or sign up!";
-    }else{
-	loggedin = "Hello " + global.user + "!";
+    console.log(localStorage.getItem("user"));
+    if (localStorage.getItem("user") == null) {
+        loggedin = "Please login or sign up!";
+    } else {
+        loggedin = "Hello " + localStorage.getItem("user") + "!";
     }
     
     return (
