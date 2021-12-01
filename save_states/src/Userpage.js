@@ -21,7 +21,7 @@ function Userpage() {
     const playthroughs = [ "bruh" ];
     const currentGame = "bruh";
     const gameImages = {"Minecraft": portalImage, "Portal": portalImage, "Terraria": portalImage, "Club Penguin": portalImage, "Farm Simulator": portalImage};
-    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> <Link to={"/game?"+game}> {game} </Link></div>< /ListGroup.Item>;
+    const backlogFunc  = (game) => <ListGroup.Item> <div class={"Userpage-element mb-2"}> <Link to={"/game?"+game}> {game} </Link></div></ListGroup.Item>;
     const [state, setState] = useState({
         username: "",
         password: "",
