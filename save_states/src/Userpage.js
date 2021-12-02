@@ -122,14 +122,14 @@ function Userpage() {
     }
 
     function bigFollowButton(){
-	let included = false;
-	let currUser = localStorage.getItem("user");
-	for (let i = 0; i < state.followers.length; i++) {
-		if (state.followers[i] == currUser) {
-			included = true;
-			break;
-		}
-	}
+      let included = false;
+      let currUser = localStorage.getItem("user");
+      for (let i = 0; i < state.followers.length; i++) {
+        if (state.followers[i] == currUser) {
+          included = true;
+          break;
+        }
+      }
         if (state.username === currUser) {
             return;
         }
@@ -138,10 +138,12 @@ function Userpage() {
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
-									  unfollowUser(currentUser, state.username);
-									  window.location.href="/user?" + state.username;
-								      }}>Unfollow</Button></div>
+              <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
+                unfollowUser(currentUser, state.username);
+                setTimeout(() => {
+                  window.location.href="/user?" + state.username;
+                }, 100);
+              }}>Unfollow</Button></div>
                     </Col>
                     <Col />
                 </Row>
@@ -152,10 +154,12 @@ function Userpage() {
                 <Row>
                     <Col />
                     <Col xl={5}>
-                        <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
-									  followUser(currentUser, state.username);
-									  window.location.href="/user?" + state.username;
-								      }}>Follow</Button></div>
+              <div className={"Userpage-subheader"}><Button className={"mx-auto"} onClick={() => {
+                followUser(currentUser, state.username);
+                setTimeout(() => {
+                  window.location.href="/user?" + state.username;
+                }, 100);
+              }}>Follow</Button></div>
                     </Col>
                     <Col />
                 </Row>
