@@ -1,13 +1,5 @@
-{"username":"KyleChui","password":"123456","followers":["Jonah"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"Eric2002","password":"Password","followers":[],"backlog":[],"entries":[],"library":[],"userStatus":"","_id":"SB85FrtN6QDolcUM"}
 {"username":"KyleChui","password":"123456","followers":["Jonah","Eric2002"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah","Eric2002"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah","Eric2002"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah","Eric2002"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah","Eric2002"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
-{"username":"KyleChui","password":"123456","followers":["Jonah","Eric2002"],"backlog":["Legend of Zelda: A Link to the Past","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"LaQ1x1LzRYbMBNly"}
+{"username":"jpaten","password":"Password1","followers":["Eric2002"],"backlog":["Legend of Zelda: A Link to the Past","Fallout New Vegas"],"entries":[],"library":[],"userStatus":"asdf","_id":"PZxuFk8lUoKVH5lW"}
+{"username":"Eric2002","password":"Password","followers":["jpaten"],"backlog":["Fallout New Vegas","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"SB85FrtN6QDolcUM"}
+{"username":"Eric2002","password":"Password","followers":["jpaten"],"backlog":["Fallout New Vegas","Super Mario Odyssey","Legend of Zelda: A Link to the Past"],"entries":[],"library":[],"userStatus":"","_id":"SB85FrtN6QDolcUM"}
+{"username":"Eric2002","password":"Password","followers":["jpaten"],"backlog":["Fallout New Vegas","Super Mario Odyssey"],"entries":[],"library":[],"userStatus":"","_id":"SB85FrtN6QDolcUM"}
